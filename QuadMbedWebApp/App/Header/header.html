@@ -1,0 +1,19 @@
+﻿<div data-ng-controller="headerCtrl as vm" class="navbar navbar-fixed-top">
+
+    <div class="nav navbar-nav pull-left">
+        <img style=" height:48px;" src="../../Content/images/Logo-temp.png" alt="Marine Enterprise Suite" />
+
+    </div>
+
+       
+           
+                <div class="nav navbar-nav pull-right">
+                    <span  data-ng-repeat=" item in vm.toolOptions">
+                        <img style=" height:30px;padding:0;"  src="{{item.image}}" data-ng-click="vm.click(item)"/>
+                    </span>
+
+                   
+                </div>
+
+    
+</div>

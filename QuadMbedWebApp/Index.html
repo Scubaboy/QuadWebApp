@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app" xmlns="http://www.w3.org/1999/xhtml">
+
+<script src="Scripts/angular.js"></script>
+<script src="Scripts/angular-route.js"></script>
+<script src="Scripts/jquery-1.9.1.js"></script>
+<script src="Scripts/jquery.signalR-2.2.0.js"></script>
+<link href="Content/bootstrap.css" rel="stylesheet" />
+<link href="Content/bootstrap-theme.css" rel="stylesheet" />
+<script src="Scripts/angular-ui/ui-bootstrap.js"></script>
+<script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+<script src="App/app.js"></script>
+<script src="App/Factories/ToolOptions/toolOptionsFactory.js"></script>
+<script src="App/Header/header.js"></script>
+<head>
+    <title>Quad</title>
+</head>
+<body>
+    <div data-ng-include="'/app/header/header.html'"></div>
+    <div data-ng-view=""></div>
+</body>
+</html>

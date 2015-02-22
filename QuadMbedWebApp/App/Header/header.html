@@ -4,16 +4,9 @@
         <img style=" height:48px;" src="../../Content/images/Logo-temp.png" alt="Marine Enterprise Suite" />
 
     </div>
-
-       
-           
-                <div class="nav navbar-nav pull-right">
-                    <span  data-ng-repeat=" item in vm.toolOptions">
-                        <img style=" height:30px;padding:0;"  src="{{item.image}}" data-ng-click="vm.click(item)"/>
-                    </span>
-
-                   
-                </div>
-
-    
+                    <ul class="nav nav-pills pull-right" style="margin:0px" data-ng-repeat=" item in vm.toolOptions">
+                        <li class="active">
+                            <img style="height:30px;" src="{{item.image}}" data-ng-click="vm.click(item)" />
+                        </li>
+                    </ul>
 </div>

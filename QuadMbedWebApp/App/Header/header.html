@@ -4,8 +4,31 @@
         <img style=" height:48px;" src="../../Content/images/Logo-temp.png" alt="Marine Enterprise Suite" />
 
     </div>
-                    <ul class="nav nav-pills pull-right" style="margin:0px" data-ng-repeat=" item in vm.toolOptions">
-                        <li class="active">
+    <form role="search" class="navbar-form navbar-left">
+
+                    <div class="form-group" style="display:inline;">
+                        <div style="width:100%;
+  margin-bottom:0;
+  display:inline-block;">
+                            <input style=" width:100%;
+                             margin-bottom:0;
+                             display:inline-block;" type="text" placeholder="Search" class="form-control">
+                          
+
+                        </div>
+
+
+</div>
+        
+    </form>
+
+
+                    <ul class="nav nav-pills pull-right" >
+                        <li style="margin:0px"  class="active" data-ng-repeat=" item in vm.toolOptions">
+                            <img style="height:30px;" src="{{item.image}}" data-ng-click="vm.click(item)" />
+                        </li>
+                        <li class="divider"></li>
+                        <li style="margin:0px" class="active" data-ng-repeat=" item in vm.toolOptions">
                             <img style="height:30px;" src="{{item.image}}" data-ng-click="vm.click(item)" />
                         </li>
                     </ul>

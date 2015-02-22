@@ -1,9 +1,6 @@
 ﻿<div class="navbar navbar-default navbar-fixed-top" data-ng-controller="headerCtrl as vm">
     <div class="nav navbar-nav pull-left">
         <img style=" height:48px;margin-right:5px" src="../../Content/images/Logo-temp.png" alt="Marine Enterprise Suite" />
-
-
-
     </div>
     <div class="container" style="width:100%">
         <div class="navbar-header">
@@ -12,23 +9,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
         </div>
         <div class="navbar-collapse collapse" id="searchbar">
-            
-
             <ul class="nav navbar-nav pull-right" style="margin-left:5px">
                 <li data-ng-repeat=" item in vm.toolOptions">
                     <span>
                         <img style="height:40px; margin-top:6px" src="{{item.image}}" data-ng-click="vm.click(item)" />
                     </span>
                 </li>
-                
             </ul>
-
-
-
-
             <form class="navbar-form">
                 <div class="form-group" style="display: inline;">
                     <div class="input-group" style="display: table;">
@@ -37,7 +26,6 @@
                     </div>
                 </div>
             </form>
-
         </div><!--/.nav-collapse -->
     </div>
 </div>

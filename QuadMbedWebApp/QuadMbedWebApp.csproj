@@ -91,6 +91,7 @@
   <ItemGroup>
     <Content Include="App\app.js" />
     <Content Include="App\Body\body.html" />
+    <Content Include="App\Directives\WindowDrag\windowDrag.js" />
     <Content Include="App\Factories\ToolOptions\toolOptionsFactory.js" />
     <Content Include="App\Factories\Window Manager\windowManager.js" />
     <Content Include="App\Header\header.html" />
@@ -101,6 +102,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Logo-temp.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\QuadTool.png" />
     <Content Include="Content\Images\Settings-Icon-3.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Index.html" />

@@ -228,12 +228,6 @@
             if (indexToDelete != -1) {
                 windows.splice(indexToDelete, 1);
             }
-
-            if (closingNotification) {
-                pubsub.trigger({
-                    topic: closingNotification
-                });
-            }
         }
 
         return service;

@@ -92,6 +92,7 @@
     <Content Include="App\app.js" />
     <Content Include="App\Body\body.html" />
     <Content Include="App\Factories\ToolOptions\toolOptionsFactory.js" />
+    <Content Include="App\Factories\Window Manager\windowManager.js" />
     <Content Include="App\Header\header.html" />
     <Content Include="App\Header\header.js" />
     <Content Include="Content\bootstrap-theme.css" />

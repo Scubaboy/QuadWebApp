@@ -11,7 +11,7 @@
         vm.toolOptions = toolOptionsFct.tools();
 
         vm.click = function (item) {
-            console.log("click");
+            console.log("click"); 
         }
     };
 })()

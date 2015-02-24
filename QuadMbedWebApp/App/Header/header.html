@@ -1,4 +1,5 @@
-﻿<div class="navbar navbar-default navbar-fixed-top" data-ng-controller="headerCtrl as vm">
+﻿<div class="container">
+<div class="navbar navbar-default navbar-fixed-top" data-ng-controller="headerCtrl as vm">
     <div class="nav navbar-nav pull-left">
         <img style=" height:48px;margin-right:5px" src="../../Content/images/Logo.png" alt="Marine Enterprise Suite" />
     </div>
@@ -14,9 +15,9 @@
 
             <ul class="nav navbar-nav pull-right" style="margin-left:5px">
                 <li style="height: 40px; margin: 6px 4px ; border-left: 1px solid #eae5e5; border-right: 1px solid #eae5e5;"></li>
-                <li>
+                <li data-ng-repeat=" item in vm.quadControl">
                     <span>
-                        <img style="height:40px; margin-top:6px" src="../../Content/images/QuadTool.png" data-ng-click="vm.click(item)" />
+                        <img style="height:40px; margin-top:6px" src="{{item.image}}" data-ng-click="vm.click(item)" />
                     </span>
                 </li>
                 <li  style="height: 40px; margin: 6px 4px ; border-left: 1px solid #eae5e5; border-right: 1px solid #eae5e5;"></li>
@@ -26,9 +27,9 @@
                     </span>
                 </li>
                 <li style="height: 40px; margin: 6px 4px ; border-left: 1px solid #eae5e5; border-right: 1px solid #eae5e5;"></li>
-                <li>
+                <li data-ng-repeat=" item in vm.userSettings">
                     <span>
-                        <img style="height:40px; margin-top:6px" src="../../Content/images/emptyProfile.png" data-ng-click="vm.click(item)" />
+                        <img style="height:40px; margin-top:6px" src="{{item.image}}" data-ng-click="vm.click(item)" />
                     </span>
                 </li>
             </ul>
@@ -43,5 +44,6 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
+    </div>
 
 

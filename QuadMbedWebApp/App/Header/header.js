@@ -3,15 +3,17 @@
 
     var controllerId = 'headerCtrl';
 
-    angular.module('app').controller(controllerId, ['toolOptionsFct', headerCtrl]);
+    angular.module('app').controller(controllerId, ['toolFct', headerCtrl]);
 
-    function headerCtrl(toolOptionsFct) {
+    function headerCtrl(toolFct) {
         var vm = this;
 
-        vm.toolOptions = toolOptionsFct.tools();
+        vm.toolOptions = toolFct.tools();
+        vm.userSettings = toolFct.userSettings();
+        vm.quadControl = toolFct.quadControl();
 
         vm.click = function (item) {
-            console.log("click"); 
+            toolFct.clickAction(item);
         }
     };
 })()

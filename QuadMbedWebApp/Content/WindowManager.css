@@ -1,0 +1,61 @@
+﻿.windowDiv {
+  border:2px solid #707070;
+  -webkit-border-top-left-radius:6px;
+  -webkit-border-top-right-radius:6px;
+  -moz-border-radius-topleft:6px;
+  -moz-border-radius-topright:6px;
+  border-top-left-radius:6px;
+  border-top-right-radius:6px;
+  background-color: white;
+  width:300px;
+  font-size:12pt; /* or whatever */
+    overflow: hidden;
+    margin-left: 2px;
+}
+.windowDiv h2 {
+  padding:4px;
+  color:#fff;
+  margin:0;
+  background-color:#707070;
+  font-size:12pt; /* or whatever */
+}
+.windowDiv p {
+  padding:4px; 
+}
+
+.dockingGrid {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 105px;
+    height: 105px;
+    left: 50%;
+    top: 50%;
+    margin-top: -53px;
+    margin-left: -53px;
+    z-index: 999;
+
+}
+
+.dockingButton {
+    margin: 0;
+    padding: 0;
+    border: 1px solid;
+    border-radius: 7px;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    position: relative;
+    background-color: #d3d3d3;
+    z-index: 999;
+}
+
+.highlightDockArea {
+    color: #40e0d0;
+    background-color: #40e0d0;
+}
+
+body { padding-top: 40px; }
+@media screen and (max-width: 768px) {
+    body { padding-top: 0px; }
+}

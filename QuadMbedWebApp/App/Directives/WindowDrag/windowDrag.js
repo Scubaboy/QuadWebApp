@@ -3,11 +3,11 @@
 
     var directiveId = "winDragDirect";
 
-    angular.module('App').directive(directiveId, ['windowManager', winDrag]);
+    angular.module('app').directive(directiveId, ['windowManager', winDrag]);
 
     function winDrag(windowManager) {
 
-        function link(scope, element, attrs) {
+        function link(scope, element, attr) {
             var startX = 0, startY = 0, windowId = attr.windowid;
 
             var myWindow = windowManager.getWindowById(windowId);

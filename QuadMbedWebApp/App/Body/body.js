@@ -3,15 +3,21 @@
 
     var controllerId = 'bodyCtrl';
 
-    angular.module('app').controller(controllerId, ['windowManager', bodyCtrl]);
+    angular.module('app').controller(controllerId, ['windowManager', 'menuServiceId', bodyCtrl]);
 
-    function bodyCtrl(windowManager) {
+    function bodyCtrl(windowManager, menuServiceId) {
         var vm = this;
 
         vm.windows = windowManager.getWindows();
+        vm.subMenu = function () {
+            return menuServiceId.getSubMenu();
+        }
 
-        vm.gotActiveWindows = function () {
-            return windowManager.getWindows().length > 0;
+        vm.showSubMenuBar = function () {
+            if (menuServiceId.getSubMenu() == undefined) {
+                return false;
+            }
+            return menuServiceId.getSubMenu().length > 0;
         };
     };
 })()

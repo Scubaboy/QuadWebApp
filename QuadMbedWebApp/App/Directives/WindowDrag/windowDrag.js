@@ -3,9 +3,9 @@
 
     var directiveId = "winDragDirect";
 
-    angular.module('app').directive(directiveId, ['windowManager', winDrag]);
+    angular.module('app').directive(directiveId, ['windowManager','$document', winDrag]);
 
-    function winDrag(windowManager) {
+    function winDrag(windowManager, $document) {
 
         function link(scope, element, attr) {
             var startX = 0, startY = 0, windowId = attr.windowid;
@@ -165,7 +165,7 @@
                 }
 
                 //maybe have a size/position object to send position data?
-                $rootScope.$emit('WindowDragMouseDown', myWindow.elementId, myWindow.x, myWindow.y, myWindow.width, myWindow.height);
+                //$rootScope.$emit('WindowDragMouseDown', myWindow.elementId, myWindow.x, myWindow.y, myWindow.width, myWindow.height);
 
                 element.css({
                     top: myWindow.y + 'px',
@@ -186,7 +186,7 @@
 
                 enforceMinimumSizes();
 
-                $rootScope.$emit('WindowResize', myWindow.elementId, myWindow.width, myWindow.height);
+                //$rootScope.$emit('WindowResize', myWindow.elementId, myWindow.width, myWindow.height);
 
                 element.css({
                     top: myWindow.y + 'px',
@@ -221,7 +221,7 @@
 
                 myWindow.x = right - myWindow.width;
 
-                $rootScope.$emit('WindowResize', myWindow.elementId, myWindow.width, myWindow.height);
+               // $rootScope.$emit('WindowResize', myWindow.elementId, myWindow.width, myWindow.height);
 
                 //var parent = element.parent().parent()[0];
                 //myWindow.y = event.pageY - parent.offsetTop - myWindow.height;
@@ -271,12 +271,12 @@
             }
 
             function dragMouseup() {
-                redrawIfOffScreen();
+                //redrawIfOffScreen();
 
                 $document.off('mousemove', dragMousemove);
                 $document.off('mouseup', dragMouseup);
 
-                $rootScope.$emit('WindowDragMouseUp', windowId, myWindow.x, myWindow.y);
+               // $rootScope.$emit('WindowDragMouseUp', windowId, myWindow.x, myWindow.y);
             }
 
             function bottomRightMouseup() {
@@ -284,7 +284,7 @@
                 $document.off('mousemove', bottomRightMousemove);
                 $document.off('mouseup', bottomRightMouseup);
 
-                $rootScope.$emit('WindowResizeEnd', myWindow.elementId, myWindow.width, myWindow.height);
+                //$rootScope.$emit('WindowResizeEnd', myWindow.elementId, myWindow.width, myWindow.height);
 
             }
 
@@ -293,7 +293,7 @@
                 $document.off('mousemove', bottomLeftMousemove);
                 $document.off('mouseup', bottomLeftMouseup);
 
-                $rootScope.$emit('WindowResizeEnd', myWindow.elementId, myWindow.width, myWindow.height);
+                //$rootScope.$emit('WindowResizeEnd', myWindow.elementId, myWindow.width, myWindow.height);
 
 
             }
@@ -323,7 +323,7 @@
                     headerXEnd += myWindow.width;
                 }
 
-                var headerYStart = parent.offsetTop;
+                var headerYStart = 0;//parent.offsetTop;
                 if (isNaN(myWindow.y)) {
                     headerYStart += getSizeFromPercentageString(myWindow.y, parent.scrollHeight);
                 } else {

@@ -98,6 +98,7 @@
     <Content Include="App\Factories\WindowManager\windowManager.js" />
     <Content Include="App\Header\header.html" />
     <Content Include="App\Header\header.js" />
+    <Content Include="App\Services\MenuService\menuService.js" />
     <Content Include="App\Windows\Settings\settings.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

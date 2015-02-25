@@ -3,15 +3,50 @@
 
     var factoryId = "toolFct";
 
-    angular.module('app').factory(factoryId, ['windowManager', toolFct]);
+    angular.module('app').factory(factoryId, ['windowManager','menuServiceId', toolFct]);
 
-    function toolFct(windowManager) {
+    function toolFct(windowManager, menuServiceId) {
+        RegisterSubMenus()
+
+        function RegisterSubMenus()
+        {
+            menuServiceId.registerSubMenu([{
+                title: 'Select Sys Config',
+                isActive: true,
+                selectAction: function (){
+                    windowManager.addSettingsWindow();
+                },
+            },
+            {
+                title: 'Run Config',
+                isActive: false,
+                selectAction: function () {
+                    windowManager.addRunConfigWindow();
+                }
+            },
+            {
+                title: 'Save/Load Config',
+                isActive: false,
+                selectAction: function () {
+                    windowManager.addLoadConfigWindow();
+                }
+            },
+            {
+                title: 'Tune PIDs',
+                isActive: false,
+                selectAction: function () {
+                    windowManager.addTunePIDsWindow();
+                }
+            }
+            ], 'settingsSubMenu');
+        }
 
         function tools() {
             return [
                 {
                     name: "Settings",
-                    image: "../../Content/images/Setting-Icon.png"
+                    image: "../../Content/images/Setting-Icon.png",
+                    subMenuId: 'settingsSubMenu'
                 },
                 {
                     name: "Kpi",
@@ -40,7 +75,7 @@
 
         function clickAction(item){
             console.log(item.name);
-            windowManager.addSettingsWindow();
+            menuServiceId.setSubMenu(item.subMenuId)
         };
 
         var services =

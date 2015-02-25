@@ -20,8 +20,8 @@
         var windows = [];
 
         var xpos = 10;
-        var ypos = 10;
-        var width = 500;
+        var ypos = 100;
+        var width = 700;
         var height = 250;
         var windowId = 0;
         var largestZ = 0;

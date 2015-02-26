@@ -14,7 +14,13 @@
                 title: 'Select Sys Config',
                 isActive: true,
                 selectAction: function (){
-                    windowManager.addSettingsWindow();
+                    windowManager.addUIWindow({
+                        name: 'Settings',
+                        route: '/app/Windows/Settings/settings.html',
+                        width: 400,
+                        height: 300,
+                        showHeader: true
+                    });
                 },
             },
             {
@@ -78,7 +84,7 @@
             menuServiceId.setSubMenu(item.subMenuId)
         };
 
-        var services =
+        var factory =
             {
                 tools: tools,
                 userSettings: userSettings,
@@ -86,6 +92,6 @@
                 clickAction: clickAction
             };
 
-        return services;
+        return factory;
     }
 })()

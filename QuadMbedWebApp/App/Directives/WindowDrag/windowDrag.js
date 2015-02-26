@@ -95,7 +95,7 @@
             });
 
             element.on('mouseleave', function (event) {
-                setHeader(false);
+                setHeader(true);
             });
 
             element.on('mousemove', function (event) {

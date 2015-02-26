@@ -13,7 +13,7 @@
             getWindowById: getWindowById,
             deleteWindowById: deleteWindowById,
             bringWindowToFront: bringWindowToFront,
-            addSettingsWindow: addSettingsWindow,
+            addUIWindow: addUIWindow,
             getWindowByElementId: getWindowByElementId
         };
 
@@ -21,8 +21,8 @@
 
         var xpos = 10;
         var ypos = 100;
-        var width = 700;
-        var height = 250;
+        var width = 500;
+        var height = 300;
         var windowId = 0;
         var largestZ = 0;
 
@@ -66,14 +66,14 @@
             return window;
         }
 
-        function addSettingsWindow() {
+        function addUIWindow(windowAtts) {
             var myWindow = addWindow();
 
-            myWindow.name = "Settings";
-            myWindow.route = '/app/Windows/Settings/settings.html';
-            myWindow.minWidth = 400;
-            myWindow.minHeight = 200;
-            myWindow.showHeader = true;
+            myWindow.name = windowAtts.name; //"Settings";
+            myWindow.route = windowAtts.route;//'/app/Windows/Settings/settings.html';
+            myWindow.minWidth = windowAtts.width;//400;
+            myWindow.minHeight = windowAtts.height;//200;
+            myWindow.showHeader = windowAtts.showHeader;//true;
             windows.push(myWindow);
         }
 

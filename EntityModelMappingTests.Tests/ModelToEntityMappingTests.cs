@@ -56,7 +56,7 @@ namespace EntityModelMappingTests.Tests
             var actual = ObjectToJsonString(entityFromModel);
             var expected = ObjectToJsonString(entityData);
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual); 
         }
     }
 }

@@ -937,6 +937,8 @@
     <Compile Include="Infrastructure\Models\ActiveQuad.cs" />
     <Compile Include="Infrastructure\Models\Types.cs" />
     <Compile Include="Infrastructure\SignalRHubs\ActiveQuadHub\ActiveQuadHub.cs" />
+    <Compile Include="Infrastructure\EntityFramework\StoreControllers\ActiveQuadsStoreController\ActiveQuadsStoreCtrl.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Interfaces\IActiveQuadsCtrl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

@@ -7,6 +7,7 @@ using QuadCtrl.Infrastructure.EntityFramework.DbContexts;
 using QuadCtrl.Infrastructure.EntityFramework.Entities;
 using QuadCtrl.Infrastructure.EntityFramework.Interfaces;
 using QuadCtrl.Infrastructure.EntityFramework.Repositories;
+using QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsStoreController;
 using QuadCtrl.Infrastructure.EntityFramework.Stores;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,10 @@ namespace QuadCtrl
 
             kernel.Bind<IActiveQuads>()
                 .To<ActiveQuadStore>()
+                .InSingletonScope();
+
+            kernel.Bind<IActiveQuadsCtrl>()
+                .To<ActiveQuadsStoreCtrl>()
                 .InSingletonScope();
 
             var config = new HubConfiguration();

@@ -9,7 +9,6 @@ using System.Web;
 
 namespace QuadCtrl.Infrastructure.EntityFramework.Repositories
 {
-
     public class ActiveQuadRepository : IRepository<ActiveQuads>
     {
         private DbSet<ActiveQuads> dbSet;
@@ -23,22 +22,52 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories
 
         public IQueryable<ActiveQuads> All
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                return this.dbSet;
+            } 
         }
 
         public void Add(ActiveQuads item)
         {
-            throw new NotImplementedException();
+            this.dbSet.Add(item);
+            this.Save();
         }
 
         public void Remove(ActiveQuads item)
         {
-            throw new NotImplementedException();
+            this.dbSet.Remove(item);
+            this.Save();
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            if (this.dbSet.Any())
+            {
+                foreach (var item in this.dbSet)
+                {
+                    this.dbSet.Remove(item);
+                }
+
+                this.Save();
+            }
+        }
+
+        private void Save()
+        {
+            try
+            {
+                this.db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                var errors = this.db.GetValidationErrors();
+
+                if (errors.Any())
+                {
+
+                }
+            }
         }
     }
 }

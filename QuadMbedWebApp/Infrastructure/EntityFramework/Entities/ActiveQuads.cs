@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuadCtrl.Infrastructure.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,21 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Entities
 
         [Required]
         public virtual string QuadId { get; set; }
+
+        [Required]
+        public virtual CommsOptions SupportedComms { get; set; }
+
+        [Required]
+        public virtual IMUOpions SupportedIMU { get; set; }
+
+        [Required]
+        public virtual GPSOptions SupportGPS { get; set; }
+
+        [Required]
+        public virtual AltimeterOptions SupportedAlt { get; set; }
+
+        [Required]
+        public virtual bool InUse { get; set; }
         
     }
 }

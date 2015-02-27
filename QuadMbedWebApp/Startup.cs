@@ -3,9 +3,11 @@ using Microsoft.Owin;
 using Ninject;
 using Owin;
 using QuadCtrl.Infrastructure.Dependecy_Resolver.Ninject;
-using QuadCtrl.Infrastructure.SystemStorage;
-using QuadCtrl.Infrastructure.SystemStorage.LocalStorage;
-using QuadCtrl.Infrastructure.SystemStorage.SystemStore;
+using QuadCtrl.Infrastructure.EntityFramework.DbContexts;
+using QuadCtrl.Infrastructure.EntityFramework.Entities;
+using QuadCtrl.Infrastructure.EntityFramework.Interfaces;
+using QuadCtrl.Infrastructure.EntityFramework.Repositories;
+using QuadCtrl.Infrastructure.EntityFramework.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +25,17 @@ namespace QuadCtrl
             var kernel = new StandardKernel();
             var resolver = new NinjectSignalRDependencyResolver(kernel);
 
-            //Setup system config store binding.
-            kernel.Bind<IStore>()
-                .To<MemoryStorage>()
-                .InSingletonScope();
+            var quadDbCon = new QuadDbContext("ggg");
 
-            kernel.Bind<ISystemStorage>()
-                .To<SysStore>()
+            //Setup system config store binding.
+            kernel.Bind<IRepository<ActiveQuads>>()
+                .To<ActiveQuadRepository>()
+                .InSingletonScope()
+                .WithConstructorArgument("db", quadDbCon);
+
+
+            kernel.Bind<IActiveQuads>()
+                .To<ActiveQuadStore>()
                 .InSingletonScope();
 
             var config = new HubConfiguration();

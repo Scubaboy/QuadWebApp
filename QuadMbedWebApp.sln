@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuadMbedWebApp", "QuadMbedWebApp\QuadMbedWebApp.csproj", "{A22CD75F-9336-4668-966B-D45E748418D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemStoreTests.Tests", "SystemStoreTests.Tests\SystemStoreTests.Tests.csproj", "{19BF2B4B-6801-4FE6-867A-A39EC47550E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A22CD75F-9336-4668-966B-D45E748418D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A22CD75F-9336-4668-966B-D45E748418D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A22CD75F-9336-4668-966B-D45E748418D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BF2B4B-6801-4FE6-867A-A39EC47550E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BF2B4B-6801-4FE6-867A-A39EC47550E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BF2B4B-6801-4FE6-867A-A39EC47550E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BF2B4B-6801-4FE6-867A-A39EC47550E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

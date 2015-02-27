@@ -38,6 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -914,16 +920,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\Dependecy Resolver\Ninject\NinjectSignalRDependencyResolver.cs" />
+    <Compile Include="Infrastructure\EntityFramework\DbContexts\QuadDbContext.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Entities\ActiveQuads.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Interfaces\IActiveQuads.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Interfaces\IRepository.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Repositories\ActiveQuadRepository.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Stores\ActiveQuadsStore.cs" />
     <Compile Include="Infrastructure\SignalRHubs\ActiveQuadHub\ActiveQuadHub.cs" />
-    <Compile Include="Infrastructure\SystemStorage\ActiveQuadItem\ActiveQuadItem.cs" />
-    <Compile Include="Infrastructure\SystemStorage\ActiveQuadItem\ActiveQuads.cs" />
-    <Compile Include="Infrastructure\SystemStorage\IStorageItemGeneral.cs" />
-    <Compile Include="Infrastructure\SystemStorage\IStorageItemSpecific.cs" />
-    <Compile Include="Infrastructure\SystemStorage\IStore.cs" />
-    <Compile Include="Infrastructure\SystemStorage\ISystemStorage.cs" />
-    <Compile Include="Infrastructure\SystemStorage\LocalStorage\MemoryStorage.cs" />
-    <Compile Include="Infrastructure\SystemStorage\StoreTypes.cs" />
-    <Compile Include="Infrastructure\SystemStorage\SystemStore\SysStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

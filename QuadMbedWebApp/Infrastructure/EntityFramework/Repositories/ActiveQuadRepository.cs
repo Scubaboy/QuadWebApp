@@ -31,13 +31,11 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories
         public void Add(ActiveQuads item)
         {
             this.dbSet.Add(item);
-            this.Save();
         }
 
         public void Remove(ActiveQuads item)
         {
             this.dbSet.Remove(item);
-            this.Save();
         }
 
         public void Clear()
@@ -48,12 +46,10 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories
                 {
                     this.dbSet.Remove(item);
                 }
-
-                this.Save();
             }
         }
 
-        private void Save()
+        public void Save()
         {
             try
             {

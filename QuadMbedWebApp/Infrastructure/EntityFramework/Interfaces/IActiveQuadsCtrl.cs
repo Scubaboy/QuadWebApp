@@ -9,6 +9,8 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Interfaces
 {
     public interface IActiveQuadsCtrl
     {
-        bool Add(ActiveQuad newQuad);
+        void Add(ActiveQuad newQuad);
+        void Update(ActiveQuad quad);
+        List<ActiveQuad> AvailableQuads();
     }
 }

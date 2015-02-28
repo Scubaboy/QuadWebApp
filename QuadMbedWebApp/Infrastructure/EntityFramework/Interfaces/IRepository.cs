@@ -12,5 +12,6 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Interfaces
         void Add(T item);
         void Remove(T item);
         void Clear();
+        void Save();
     }
 }

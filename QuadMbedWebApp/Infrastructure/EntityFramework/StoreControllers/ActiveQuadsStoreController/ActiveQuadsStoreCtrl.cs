@@ -6,6 +6,7 @@ using System.Web;
 using QuadCtrl.Infrastructure.EntityFramework.Extensions;
 using System.Threading.Tasks;
 using QuadCtrl.Infrastructure.Models;
+using QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsStoreController.EventArgs;
 
 namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsStoreController
 {
@@ -92,5 +93,17 @@ namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsSt
                 throw new InvalidOperationException("Repository is null.");
             }
         }
+
+        protected virtual void OnActiveQuadChange(ActiveQuadCtrlEventArgs eventArgs)
+        {
+            EventHandler<ActiveQuadCtrlEventArgs> handler = ActiveQuadChange; 
+
+            if (handler != null)
+            {
+                handler(this, eventArgs);
+            }
+        }
+
+        public event EventHandler<EventArgs.ActiveQuadCtrlEventArgs> ActiveQuadChange;
     }
 }

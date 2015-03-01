@@ -1,4 +1,5 @@
-﻿using QuadCtrl.Infrastructure.Models;
+﻿using QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsStoreController.EventArgs;
+using QuadCtrl.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Interfaces
         void Add(ActiveQuad newQuad);
         void Update(ActiveQuad quad);
         List<ActiveQuad> AvailableQuads();
+
+        event EventHandler<ActiveQuadCtrlEventArgs> ActiveQuadChange;
     }
 }

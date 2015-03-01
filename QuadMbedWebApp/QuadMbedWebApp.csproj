@@ -933,6 +933,7 @@
     <Compile Include="Infrastructure\EntityFramework\Interfaces\IActiveQuads.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\IRepository.cs" />
     <Compile Include="Infrastructure\EntityFramework\Repositories\ActiveQuadRepository.cs" />
+    <Compile Include="Infrastructure\EntityFramework\StoreControllers\ActiveQuadsStoreController\EventArgs\ActiveQuadCtrlEventArgs.cs" />
     <Compile Include="Infrastructure\EntityFramework\StoreControllers\ActiveQuadsStoreController\Exceptions\ActiveQuadStoreException.cs" />
     <Compile Include="Infrastructure\EntityFramework\Stores\ActiveQuadStore.cs" />
     <Compile Include="Infrastructure\Models\ActiveQuad.cs" />

@@ -106,6 +106,9 @@
     <Content Include="App\Body\body.js" />
     <Content Include="App\config.routes.js" />
     <Content Include="App\Directives\WindowDrag\windowDrag.js" />
+    <Content Include="App\Factories\SignalR\ActiveQuads\activeQuads.js" />
+    <Content Include="App\Factories\SignalR\SignalRHubProxy\signalRHubProxy.js" />
+    <Content Include="App\Services\SignalRHub\signalRHub.js" />
     <Content Include="App\Factories\ToolOptions\toolFactory.js" />
     <Content Include="App\Factories\WindowManager\windowManager.js" />
     <Content Include="App\Header\header.html" />

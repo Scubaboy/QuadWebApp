@@ -6,13 +6,9 @@ using QuadCtrl.Infrastructure.Dependecy_Resolver.Ninject;
 using QuadCtrl.Infrastructure.EntityFramework.DbContexts;
 using QuadCtrl.Infrastructure.EntityFramework.Entities;
 using QuadCtrl.Infrastructure.EntityFramework.Interfaces;
-using QuadCtrl.Infrastructure.EntityFramework.Repositories;
+using QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive;
 using QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsStoreController;
 using QuadCtrl.Infrastructure.EntityFramework.Stores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 [assembly: OwinStartup(typeof(QuadCtrl.Startup))]
 

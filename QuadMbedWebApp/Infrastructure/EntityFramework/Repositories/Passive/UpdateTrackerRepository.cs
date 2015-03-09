@@ -7,20 +7,20 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace QuadCtrl.Infrastructure.EntityFramework.Repositories
+namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
 {
-    public class ActiveQuadRepository : IRepository<ActiveQuads>
+    public class UpdateTrackerRepository : IRepository<UpdateTracker>
     {
-        private DbSet<ActiveQuads> dbSet;
+        private DbSet<UpdateTracker> dbSet;
         private QuadDbContext db;
 
-        public ActiveQuadRepository(QuadDbContext db)
+        public UpdateTrackerRepository(QuadDbContext db)
         {
-            this.dbSet = db.Quads;
+            this.dbSet = db.UpdateTracker;
             this.db = db;
         }
 
-        public IQueryable<ActiveQuads> All
+        public IQueryable<UpdateTracker> All
         {
             get 
             {
@@ -28,12 +28,12 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories
             } 
         }
 
-        public void Add(ActiveQuads item)
+        public void Add(UpdateTracker item)
         {
             this.dbSet.Add(item);
         }
 
-        public void Remove(ActiveQuads item)
+        public void Remove(UpdateTracker item)
         {
             this.dbSet.Remove(item);
         }

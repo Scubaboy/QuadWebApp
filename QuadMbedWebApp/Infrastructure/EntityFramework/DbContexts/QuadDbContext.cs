@@ -10,6 +10,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.DbContexts
     public class QuadDbContext : DbContext
     {
         public DbSet<ActiveQuads> Quads { get; set; }
+        public DbSet<UpdateTracker> UpdateTracker { get; set; }
 
         public QuadDbContext(string connectionString) :
             base(connectionString)
@@ -20,6 +21,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.DbContexts
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ActiveQuads>();
+            modelBuilder.Entity<UpdateTracker>();
         }
     }
 }

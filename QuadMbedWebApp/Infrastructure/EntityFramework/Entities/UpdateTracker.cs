@@ -18,7 +18,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Entities
         public virtual DbUpdate UpdateMade { get; set; }
 
         [Required]
-        public virtual DbAccessEntities MadeBy { get; set; }
+        public virtual string MadeBy { get; set; }
 
         [Required]
         public virtual DateTime? TimeStamp { get; set; }

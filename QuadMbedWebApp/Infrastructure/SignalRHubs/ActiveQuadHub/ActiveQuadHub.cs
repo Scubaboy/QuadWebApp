@@ -35,14 +35,6 @@ namespace QuadCtrl.Infrastructure.SignalRHubs.ActiveQuadHub
 
         }
 
-        public async Task<List<ActiveQuad>> GetActiveQuads()
-        {
-            return await Task.Run(() =>
-                {
-                    return activeQuadCtrl.AvailableQuads();
-                });
-        }
-
         public override Task OnConnected()
         {
             ActiveQuadConnections.ConnectedIds.Add(Context.ConnectionId);

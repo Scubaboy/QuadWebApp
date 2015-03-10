@@ -30,7 +30,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = string.Empty;
 
@@ -54,7 +54,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = null;
 
@@ -78,7 +78,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = "quadId";
 
@@ -106,7 +106,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
         {
             var activeQuadStore = new ActiveQuadsStoreCtrl(null);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = null;
 
@@ -120,7 +120,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
         {
             var activeQuadStore = new ActiveQuadsStoreCtrl(null);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = null;
 
@@ -144,7 +144,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = null;
 
@@ -168,7 +168,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = string.Empty;
 
@@ -198,7 +198,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = "quad1";
 
@@ -220,12 +220,12 @@ namespace ActiveQuadsStoreCtrlTests.tests
                 mockStore.Add(quad);
             });
 
-            mockIRepository.SetupGet(x => x.All).Returns(mockStore.AsQueryable);
+            mockIRepository.SetupGet(x => x.All).Returns(mockStore);
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
             var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = "quad1";
 
@@ -251,7 +251,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
 
-            var newQuad = new ActiveQuad();
+            var newQuad = new ActiveQuads();
 
             newQuad.QuadId = "quad1";
 

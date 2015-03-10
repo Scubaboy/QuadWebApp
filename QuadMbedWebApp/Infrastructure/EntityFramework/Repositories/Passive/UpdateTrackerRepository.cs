@@ -20,7 +20,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
             this.db = db;
         }
 
-        public IQueryable<UpdateTracker> All
+        public IEnumerable<UpdateTracker> All
         {
             get 
             {
@@ -31,11 +31,13 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
         public void Add(UpdateTracker item)
         {
             this.dbSet.Add(item);
+            this.db.SaveChanges();
         }
 
         public void Remove(UpdateTracker item)
         {
             this.dbSet.Remove(item);
+            this.db.SaveChanges();
         }
 
         public void Clear()
@@ -46,24 +48,17 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
                 {
                     this.dbSet.Remove(item);
                 }
-            }
-        }
 
-        public void Save()
-        {
-            try
-            {
                 this.db.SaveChanges();
             }
-            catch (Exception)
-            {
-                var errors = this.db.GetValidationErrors();
 
-                if (errors.Any())
-                {
+        }
 
-                }
-            }
+
+        public void Update(UpdateTracker item)
+        {
+            this.db.Entry(item).State = EntityState.Modified;
+            this.db.SaveChanges();
         }
     }
 }

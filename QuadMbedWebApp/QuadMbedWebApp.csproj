@@ -937,9 +937,12 @@
     <Compile Include="Infrastructure\EntityFramework\Extensions\EntitiesMap.cs" />
     <Compile Include="Infrastructure\EntityFramework\Extensions\ModelsMap.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\IActiveQuads.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Interfaces\IActiveReposIdProvider.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\IRepository.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\ITrackUpdateMonitor.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\IUpdateTrackerRepos.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Repositories\Active\ActiveQuadRepositoryActive.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Repositories\Active\IdProviders\BasicActiveReposIdProvider.cs" />
     <Compile Include="Infrastructure\EntityFramework\Repositories\Passive\ActiveQuadRepository.cs" />
     <Compile Include="Infrastructure\EntityFramework\Repositories\Passive\UpdateTrackerRepository.cs" />
     <Compile Include="Infrastructure\EntityFramework\Repositories\TrackUpdatesMonitores\ActiveQuadMonitor\ActiveQuadMon.cs" />

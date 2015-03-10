@@ -20,7 +20,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
             this.db = db;
         }
 
-        public IQueryable<ActiveQuads> All
+        public IEnumerable<ActiveQuads> All
         {
             get 
             {
@@ -31,11 +31,13 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
         public void Add(ActiveQuads item)
         {
             this.dbSet.Add(item);
+            this.db.SaveChanges();
         }
 
         public void Remove(ActiveQuads item)
         {
             this.dbSet.Remove(item);
+            this.db.SaveChanges();
         }
 
         public void Clear()
@@ -47,23 +49,15 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
                     this.dbSet.Remove(item);
                 }
             }
+
+            this.db.SaveChanges();
         }
 
-        public void Save()
+
+        public void Update(ActiveQuads item)
         {
-            try
-            {
-                this.db.SaveChanges();
-            }
-            catch (Exception)
-            {
-                var errors = this.db.GetValidationErrors();
-
-                if (errors.Any())
-                {
-
-                }
-            }
+            this.db.Entry(item).State = EntityState.Modified;
+            this.db.SaveChanges();
         }
     }
 }

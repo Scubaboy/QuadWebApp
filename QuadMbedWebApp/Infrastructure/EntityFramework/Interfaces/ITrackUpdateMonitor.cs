@@ -9,8 +9,8 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Interfaces
 {
     interface ITrackUpdateMonitor
     {
-        public bool Start();
-        public bool Stop();
+        bool Start();
+        bool Stop();
 
         event EventHandler<UpdateTrackMonitorEvtArgs> TrackUpdateMonitorChange;
     }

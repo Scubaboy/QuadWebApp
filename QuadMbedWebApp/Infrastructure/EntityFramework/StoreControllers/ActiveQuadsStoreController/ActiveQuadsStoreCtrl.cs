@@ -7,19 +7,24 @@ using QuadCtrl.Infrastructure.EntityFramework.Extensions;
 using System.Threading.Tasks;
 using QuadCtrl.Infrastructure.Models;
 using QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsStoreController.EventArgs;
+using QuadCtrl.Infrastructure.EntityFramework.Entities;
+using QuadCtrl.Infrastructure.EntityFramework.Event_Arguments.UpdateTrackerMonitorEventArguments;
 
 namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsStoreController
 {
     public class ActiveQuadsStoreCtrl : IActiveQuadsCtrl
     {
         IActiveQuads repos = null;
+        ITrackUpdateMonitor updateMonitor;
 
-        public ActiveQuadsStoreCtrl(IActiveQuads activeQuads)
+        public ActiveQuadsStoreCtrl(IActiveQuads activeQuads, ITrackUpdateMonitor updateMonitor)
         {
             this.repos = activeQuads;
+            this.updateMonitor = updateMonitor;
+           
         }
 
-        public void Add(Models.ActiveQuad newQuad)
+        public void Add(ActiveQuads newQuad)
         {
             if (this.repos != null)
             {
@@ -27,8 +32,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsSt
                 {
                     if (!this.repos.Quads.All.Any(x => x.QuadId == newQuad.QuadId))
                     {
-                        this.repos.Quads.Add(newQuad.ToEntity());
-                        this.repos.Quads.Save();
+                        this.repos.Quads.Add(newQuad);
                     }
                     else
                     {
@@ -47,28 +51,13 @@ namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsSt
 
         }
 
-        public void Update(Models.ActiveQuad quad)
+        public void Update(ActiveQuads quad)
         {
             if (this.repos != null)
             {
                 if (quad.QuadId != null && quad.QuadId != string.Empty)
                 {
-                    var requiredActiveQuad = this.repos.Quads.All.FirstOrDefault(x => x.QuadId == quad.QuadId);
-
-                    if (requiredActiveQuad != null)
-                    {
-                        requiredActiveQuad.InUse = quad.InUse;
-                        requiredActiveQuad.SupportedAlt = quad.SupportedAlt;
-                        requiredActiveQuad.SupportedComms = quad.SupportedComms;
-                        requiredActiveQuad.SupportedIMU = quad.SupportedIMU;
-                        requiredActiveQuad.SupportGPS = quad.SupportGPS;
-
-                        this.repos.Quads.Save();
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Quad Id not in store", "quad");
-                    }
+                    this.repos.Quads.Update(quad);
                 }
                 else
                 {
@@ -82,11 +71,11 @@ namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsSt
         }
 
 
-        public List<ActiveQuad> AvailableQuads()
+        public List<ActiveQuads> AvailableQuads()
         {
             if (this.repos != null)
             {
-                return this.repos.Quads.All.Select(x => x.ToModel()).ToList();
+                return this.repos.Quads.All.ToList();
             }
             else
             {
@@ -105,5 +94,17 @@ namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsSt
         }
 
         public event EventHandler<EventArgs.ActiveQuadCtrlEventArgs> ActiveQuadChange;
+
+
+        public void Initialise()
+        {
+            this.updateMonitor.TrackUpdateMonitorChange += updateMonitor_TrackUpdateMonitorChange;
+            this.updateMonitor.Start();
+        }
+
+        void updateMonitor_TrackUpdateMonitorChange(object sender, UpdateTrackMonitorEvtArgs e)
+        {
+            this.OnActiveQuadChange(new ActiveQuadCtrlEventArgs());
+        }
     }
 }

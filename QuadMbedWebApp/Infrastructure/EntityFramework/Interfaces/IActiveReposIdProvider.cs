@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace QuadCtrl.Infrastructure.EntityFramework.Interfaces
 {
-    public interface IRepository<T>
+    interface IActiveReposIdProvider
     {
-        IEnumerable<T> All { get; }
-        void Add(T item);
-        void Remove(T item);
-        void Update(T item);
-        void Clear();
+        string Id { get; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuadCtrl.Infrastructure.EntityFramework.Interfaces
 {
-    interface ITrackUpdateMonitor
+   public interface ITrackUpdateMonitor
     {
         bool Start();
         bool Stop();

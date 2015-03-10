@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuadCtrl.Infrastructure.EntityFramework.Interfaces
 {
-    interface IActiveReposIdProvider
+    public interface IActiveReposIdProvider
     {
         string Id { get; }
     }

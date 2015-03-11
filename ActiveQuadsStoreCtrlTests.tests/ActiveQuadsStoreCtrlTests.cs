@@ -28,7 +28,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
-            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object,null);
 
             var newQuad = new ActiveQuads();
 
@@ -52,7 +52,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
-            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object,null);
 
             var newQuad = new ActiveQuads();
 
@@ -76,7 +76,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
-            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object,null);
 
             var newQuad = new ActiveQuads();
 
@@ -90,7 +90,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
         [ExpectedException(typeof(InvalidOperationException))]
         public void QuadListStoreNullExpectInavlidOpExt()
         {
-            var activeQuadStore = new ActiveQuadsStoreCtrl(null);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(null,null);
 
             var newQuad = new ActiveQuad();
 
@@ -104,7 +104,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
         [ExpectedException(typeof(InvalidOperationException))]
         public void QuadUpdateStoreNullExpectInavlidOpExt()
         {
-            var activeQuadStore = new ActiveQuadsStoreCtrl(null);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(null,null);
 
             var newQuad = new ActiveQuads();
 
@@ -118,7 +118,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
         [ExpectedException(typeof(InvalidOperationException))]
         public void QuadAddStoreNullExpectInavlidOpExt()
         {
-            var activeQuadStore = new ActiveQuadsStoreCtrl(null);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(null,null);
 
             var newQuad = new ActiveQuads();
 
@@ -142,7 +142,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
-            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object,null);
 
             var newQuad = new ActiveQuads();
 
@@ -166,7 +166,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
-            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object,null);
 
             var newQuad = new ActiveQuads();
 
@@ -196,7 +196,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
-            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object,null);
 
             var newQuad = new ActiveQuads();
 
@@ -223,7 +223,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
             mockIRepository.SetupGet(x => x.All).Returns(mockStore);
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
-            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object,null);
 
             var newQuad = new ActiveQuads();
 
@@ -249,7 +249,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
-            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object);
+            var activeQuadStore = new ActiveQuadsStoreCtrl(mockIActiveQuads.Object,null);
 
             var newQuad = new ActiveQuads();
 

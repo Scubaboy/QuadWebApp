@@ -14,12 +14,14 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.TrackUpdatesMonit
         private CancellationTokenSource cancelToken = null;
         private IUpdateTrackerRepos updateTrackers;
         private Task monitorTask;
+        private IActiveReposIdProvider filterId;
 
-        public ActiveQuadMon(IUpdateTrackerRepos updateTrackers)
+        public ActiveQuadMon(IUpdateTrackerRepos updateTrackers, IActiveReposIdProvider filterId)
         {
             this.updateTrackers = updateTrackers;
             this.cancelToken = null;
             this.monitorTask = null;
+            this.filterId = filterId;
         }
 
         public bool Start()
@@ -30,11 +32,22 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.TrackUpdatesMonit
             {
                 this.cancelToken = new CancellationTokenSource();
 
+                //Get starting snap shot of the current updates made
+                var currentUpdates = this.updateTrackers.TrackedUpdates.All.ToList();
+
                 this.monitorTask = Task.Run(() =>
                      {
                          while (!this.cancelToken.Token.IsCancellationRequested)
                          {
+                             var updatesNow = this.updateTrackers.TrackedUpdates.All.ToList();
 
+                             if (DateTime.Compare(updatesNow.Last().TimeStamp, currentUpdates.Last().TimeStamp) != 0)
+                             {
+                                 this.OnTrackUpdateMonitorChange(new UpdateTrackMonitorEvtArgs());
+                                 currentUpdates = updatesNow;
+                             }
+
+                             Thread.Sleep(1000);
                          }
                      }, this.cancelToken.Token);
             }
@@ -57,6 +70,16 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.TrackUpdatesMonit
             }
 
             return result;
+        }
+
+        protected void OnTrackUpdateMonitorChange(UpdateTrackMonitorEvtArgs eventArgs)
+        {
+            EventHandler<UpdateTrackMonitorEvtArgs> handler = TrackUpdateMonitorChange;
+
+            if (handler != null)
+            {
+                handler(this, eventArgs);
+            }
         }
     }
 }

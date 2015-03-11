@@ -27,7 +27,9 @@ namespace QuadCtrl.Infrastructure.SignalRHubs.ActiveQuadHub
         void activeQuadCtrl_ActiveQuadChange(object sender, ActiveQuadCtrlEventArgs e)
         {
             //Notify all connected clients of the change
-            //this.Clients.All.ActiveQuadUpdated(e.updatedQuad);
+            var activeQuads = this.activeQuadCtrl.AvailableQuads();
+
+            this.Clients.All.ActiveQuadUpdated(activeQuads);
         }
 
         public void ClientUpdateActiveQuad(ActiveQuad quad)

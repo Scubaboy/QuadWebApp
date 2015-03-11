@@ -72,6 +72,9 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -106,9 +109,9 @@
     <Content Include="App\Body\body.js" />
     <Content Include="App\config.routes.js" />
     <Content Include="App\Directives\WindowDrag\windowDrag.js" />
-    <Content Include="App\Factories\SignalR\ActiveQuads\activeQuads.js" />
+    <Content Include="App\Services\SignalR\ActiveQuads\activeQuads.js" />
     <Content Include="App\Factories\SignalR\SignalRHubProxy\signalRHubProxy.js" />
-    <Content Include="App\Services\SignalRHub\signalRHub.js" />
+    <Content Include="App\Services\SignalR\SignalRHub\signalRHub.js" />
     <Content Include="App\Factories\ToolOptions\toolFactory.js" />
     <Content Include="App\Factories\WindowManager\windowManager.js" />
     <Content Include="App\Header\header.html" />

@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Ninject;
+using Ninject.Web.Common;
 using Owin;
 using QuadCtrl.Infrastructure.Dependecy_Resolver.Ninject;
 using QuadCtrl.Infrastructure.EntityFramework.DbContexts;
 using QuadCtrl.Infrastructure.EntityFramework.Entities;
 using QuadCtrl.Infrastructure.EntityFramework.Interfaces;
+using QuadCtrl.Infrastructure.EntityFramework.Repositories.Active;
+using QuadCtrl.Infrastructure.EntityFramework.Repositories.Active.IdProviders;
 using QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive;
 using QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsStoreController;
 using QuadCtrl.Infrastructure.EntityFramework.Stores;
@@ -25,8 +28,11 @@ namespace QuadCtrl
             var quadDbCon = new QuadDbContext("ggg");
 
             //Setup system config store binding.
+            kernel.Bind<BasicActiveReposIdProvider>().ToSelf().InRequestScope();
+
+            kernel.Bind<IActiveReposIdProvider>().To<BasicActiveReposIdProvider>();
             kernel.Bind<IRepository<ActiveQuads>>()
-                .To<ActiveQuadRepository>()
+                .To<ActiveQuadRepositoryActive>()
                 .InSingletonScope()
                 .WithConstructorArgument("db", quadDbCon);
 

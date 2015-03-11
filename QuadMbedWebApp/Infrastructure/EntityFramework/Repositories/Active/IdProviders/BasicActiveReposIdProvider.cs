@@ -8,9 +8,16 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Active.IdProvider
 {
     public class BasicActiveReposIdProvider : IActiveReposIdProvider
     {
+        private readonly string timeId;
+
+        public BasicActiveReposIdProvider()
+        {
+            timeId = new TimeSpan(DateTime.Now.Ticks).TotalMilliseconds.ToString();
+        }
+
         public string Id
         {
-            get { return "Web" + DateTime.Now.ToUniversalTime(); }
+            get { return "Web" + timeId; }
         }
     }
 }

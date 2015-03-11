@@ -21,6 +21,6 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Entities
         public virtual string MadeBy { get; set; }
 
         [Required]
-        public virtual DateTime? TimeStamp { get; set; }
+        public virtual DateTime TimeStamp { get; set; }
     }
 }

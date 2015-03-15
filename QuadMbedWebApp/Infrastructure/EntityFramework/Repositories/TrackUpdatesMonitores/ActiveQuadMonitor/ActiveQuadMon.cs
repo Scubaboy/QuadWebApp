@@ -16,9 +16,9 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.TrackUpdatesMonit
         private Task monitorTask;
         private IActiveReposIdProvider filterId;
 
-        public ActiveQuadMon(IUpdateTrackerRepos updateTrackers, IActiveReposIdProvider filterId)
+        public ActiveQuadMon(IActiveReposIdProvider filterId, IUpdateTrackerRepos updateTrackers)
         {
-            this.updateTrackers = updateTrackers;
+         //   this.updateTrackers = updateTrackers;
             this.cancelToken = null;
             this.monitorTask = null;
             this.filterId = filterId;

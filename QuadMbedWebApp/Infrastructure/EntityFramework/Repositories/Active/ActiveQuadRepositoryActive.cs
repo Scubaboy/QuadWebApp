@@ -14,7 +14,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Active
         private QuadDbContext db;
         private IActiveReposIdProvider activeId;
 
-        public ActiveQuadRepositoryActive(IRepository<ActiveQuads> passiveRepos, QuadDbContext db, IActiveReposIdProvider activeId)
+        public ActiveQuadRepositoryActive(IRepository<ActiveQuads> passiveRepos, QuadDbContext db, IActiveReposIdProvider activeId) //QuadDbContext db,
         {
             this.passiveRepos = passiveRepos;
             this.db = db;

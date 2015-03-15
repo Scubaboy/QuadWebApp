@@ -1,11 +1,11 @@
 ﻿(function () {
     'use strict'
 
-    var factoryId = 'ActiveQuadsSigRFct'
+    var serviceId = 'ActiveQuadsSigRService'
 
-    angular.module('app').service(factoryId, ['$q', 'signalRHub', 'signalRHubProxy', activeQuadsSigRFct]);
+    angular.module('app').service(serviceId, ['$q', 'signalRHub', 'signalRHubProxy', activeQuadsSigRService]);
 
-    function activeQuadsSigRFct($q, signalRHub, signalRHubProxy) {
+    function activeQuadsSigRService($q, signalRHub, signalRHubProxy) {
 
             var configProxy = null;
             var that = this;

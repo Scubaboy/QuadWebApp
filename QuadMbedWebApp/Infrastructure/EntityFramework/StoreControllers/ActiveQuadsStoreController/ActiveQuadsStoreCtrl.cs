@@ -17,7 +17,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsSt
         IActiveQuads repos = null;
         ITrackUpdateMonitor updateMonitor;
 
-        public ActiveQuadsStoreCtrl(IActiveQuads activeQuads, ITrackUpdateMonitor updateMonitor)
+        public ActiveQuadsStoreCtrl(IActiveQuads activeQuads, ITrackUpdateMonitor updateMonitor)//.//, ITrackUpdateMonitor updateMonitor) //(IActiveQuads activeQuads,
         {
             this.repos = activeQuads;
             this.updateMonitor = updateMonitor;

@@ -17,4 +17,12 @@
         //'breeze.angular'
     ]);
 
+    app.value('$', $);
+
+    app.run(['signalRHub', 'signalRHubConfigService', 'ActiveQuadsSigRService', function (signalRHub, signalRHubConfigService, ActiveQuadsSigRService) {
+       
+        signalRHub.initialise(signalRHubConfigService.sigRHubs);
+        ActiveQuadsSigRService.initialise();
+        signalRHub.start();
+    }]);
 })();

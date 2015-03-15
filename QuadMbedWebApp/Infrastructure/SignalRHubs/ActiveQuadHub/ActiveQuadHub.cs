@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 using QuadCtrl.Infrastructure.EntityFramework.Interfaces;
 using QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsStoreController.EventArgs;
 using QuadCtrl.Infrastructure.Models;
@@ -15,10 +16,16 @@ namespace QuadCtrl.Infrastructure.SignalRHubs.ActiveQuadHub
         public static HashSet<string> ConnectedIds = new HashSet<string>();
     }
 
+     [HubName("ActiveQuadHub")]
     public class ActiveQuadHub : Hub
     {
         private IActiveQuadsCtrl activeQuadCtrl;
 
+        public ActiveQuadHub(ITest activeQuads)
+        {
+
+        }
+ 
         public ActiveQuadHub(IActiveQuadsCtrl activeQuads)
         {
             this.activeQuadCtrl = activeQuads;

@@ -40,7 +40,7 @@
                         item.hubReady = true;
                         item.connStartedAction();
                     });
-
+                    alert("Waiting");
                     console.log("signalr service started.");
                 });
             }

@@ -2,7 +2,7 @@
     'use strict'
 
     var factoryId = 'signalRHubProxy'
-    anguar.module('app').facory(factoryId, [signalRHubProxy]);
+    angular.module('app').factory(factoryId, [signalRHubProxy]);
 
     function signalRHubProxy() {
         function hubProxy(hubProxy, qDefer) {

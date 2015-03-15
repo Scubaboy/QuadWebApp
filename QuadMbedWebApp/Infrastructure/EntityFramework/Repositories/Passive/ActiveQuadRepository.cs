@@ -14,7 +14,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
         private DbSet<ActiveQuads> dbSet;
         private QuadDbContext db;
 
-        public ActiveQuadRepository(QuadDbContext db)
+        public ActiveQuadRepository(QuadDbContext db) //QuadDbContext db
         {
             this.dbSet = db.Quads;
             this.db = db;

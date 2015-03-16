@@ -26,7 +26,13 @@
 
             this.setProxyHubActions = function(hubActions) {
                 hubActions.forEach(function (hubAction) {
-                    hubProxyInternal.proxy.on(hubAction.actionname, createCallbackFunc(hubAction.actionname, hubAction.callback)); //createCallbackFunc(hubAction.actionname, hubAction.callback)
+                    switch (hubAction.type) {
+                        case serverBroadcastUpdate:
+                            break;
+                        case serverRequestResponse:
+                            hubProxyInternal.proxy.on(hubAction.actionname, createCallbackFunc(hubAction.actionname, hubAction.callback));
+                            break;
+                    }
                 });
             }
 

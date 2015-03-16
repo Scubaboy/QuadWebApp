@@ -108,7 +108,7 @@
     <Content Include="App\Body\body.html" />
     <Content Include="App\Body\body.js" />
     <Content Include="App\config.routes.js" />
-    <Content Include="App\Constants\SignalRHubs\signalRHubConfig.js" />
+    <Content Include="App\Services\SignalR\HubConfig\signalRHubConfig.js" />
     <Content Include="App\Directives\WindowDrag\windowDrag.js" />
     <Content Include="App\Services\SignalR\ActiveQuads\activeQuads.js" />
     <Content Include="App\Factories\SignalR\SignalRHubProxy\signalRHubProxy.js" />
@@ -942,6 +942,7 @@
     <Compile Include="Infrastructure\EntityFramework\Extensions\ModelsMap.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\IActiveQuads.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\IActiveReposIdProvider.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Interfaces\IQuadDbContext.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\IRepository.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\ITrackUpdateMonitor.cs" />
     <Compile Include="Infrastructure\EntityFramework\Interfaces\IUpdateTrackerRepos.cs" />
@@ -964,7 +965,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App\Constants\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

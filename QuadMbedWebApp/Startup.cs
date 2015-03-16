@@ -30,41 +30,46 @@ namespace QuadCtrl
             var kernel = new StandardKernel();
             var resolver = new NinjectSignalRDependencyResolver(kernel);
 
-            var quadDbCon = new QuadDbContext("ggg");
-
             //Setup system config store binding.
-            kernel.Bind<IActiveReposIdProvider>().To<BasicActiveReposIdProvider>().InRequestScope();
-            kernel.Bind<IRepository<UpdateTracker>>().To<UpdateTrackerRepository>().WithConstructorArgument("db", quadDbCon);
-            kernel.Bind<IUpdateTrackerRepos>().To<UpdateTrackerStore>().InRequestScope();
-            kernel.Bind<ITrackUpdateMonitor>().To<ActiveQuadMon>().InRequestScope();
-            kernel.Bind<QuadDbContext>().To<QuadDbContext>();
-         
+            kernel.Bind<QuadDbContext>()
+                .To<QuadDbContext>()
+                .InSingletonScope()
+                .WithConstructorArgument("connectionString", "hh");
+            kernel.Bind<IActiveReposIdProvider>()
+                .To<BasicActiveReposIdProvider>()
+                .InRequestScope();
+            kernel.Bind<IRepository<UpdateTracker>>()
+                .To<UpdateTrackerRepository>()
+                .InRequestScope();
+            kernel.Bind<IUpdateTrackerRepos>()
+                .To<UpdateTrackerStore>()
+                .InRequestScope();
+            kernel.Bind<ITrackUpdateMonitor>()
+                .To<ActiveQuadMon>()
+                .InRequestScope();
 
             kernel.Bind<IRepository<ActiveQuads>>()
                 .To<ActiveQuadRepository>()
-
                 .WhenInjectedInto<ActiveQuadRepositoryActive>()
-                .WithConstructorArgument("db", quadDbCon);
+                .InRequestScope();
+
             kernel.Bind<IRepository<ActiveQuads>>()
                 .To<ActiveQuadRepositoryActive>()
                 .WhenInjectedInto<ActiveQuadStore>()
-                .WithConstructorArgument("db", quadDbCon);
+                .InRequestScope();
                 
-            
-                
-
-
             kernel.Bind<IActiveQuads>()
-                .To<ActiveQuadStore>();
+                .To<ActiveQuadStore>().InRequestScope();
 
            kernel.Bind<IActiveQuadsCtrl>()
-                .To<ActiveQuadsStoreCtrl>();
-            
-           // kernel.Bind<ITest>().To<Testy>();
+                .To<ActiveQuadsStoreCtrl>().InRequestScope();
 
-            kernel.Bind(typeof(IHubConnectionContext<dynamic>)).ToMethod(context =>
-                    resolver.Resolve<IConnectionManager>().GetHubContext<ActiveQuadHub>().Clients
-                     ).WhenInjectedInto<IActiveQuadsCtrl>();
+           kernel.Bind(typeof(IHubConnectionContext<dynamic>))
+               .ToMethod(context =>
+                   resolver.Resolve<IConnectionManager>()
+                   .GetHubContext<ActiveQuadHub>().Clients)
+                    .WhenInjectedInto<IActiveQuadsCtrl>()
+                    .InRequestScope();
 
             var config = new HubConfiguration();
 

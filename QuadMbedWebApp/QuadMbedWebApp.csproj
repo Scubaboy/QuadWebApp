@@ -105,6 +105,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\modules\viewManager\factories\viewFactory.js" />
+    <Content Include="App\modules\viewManager\services\viewService.js" />
+    <Content Include="App\modules\viewManager\viewManager.js" />
+    <Content Include="App\modules\viewManager\views\viewController.js" />
     <Content Include="App\routes\Body\body.html" />
     <Content Include="App\routes\Body\body.js" />
     <Content Include="App\config.routes.js" />
@@ -121,8 +125,8 @@
     <Content Include="App\Header\header.html" />
     <Content Include="App\Header\header.js" />
     <Content Include="App\Services\MenuService\menuService.js" />
-    <Content Include="App\Windows\Settings\settings.html" />
-    <Content Include="App\Windows\Settings\settingsController.js" />
+    <Content Include="App\modules\viewManager\views\Settings\settings.html" />
+    <Content Include="App\modules\viewManager\views\Settings\settingsController.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -972,7 +976,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App\Windows\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

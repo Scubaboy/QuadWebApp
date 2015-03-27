@@ -10,7 +10,7 @@
         //// Custom modules 
         //'common',           // common functions, logger, spinner
         //'common.bootstrap', // bootstrap dialog wrapper functions
-
+        'viewManager',
         //// 3rd Party Modules
         'ui.bootstrap',     // ui-bootstrap (ex: carousel, pagination, dialog)
         //'dx'

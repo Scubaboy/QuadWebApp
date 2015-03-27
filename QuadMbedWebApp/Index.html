@@ -8,18 +8,23 @@
 <link href="Content/bootstrap.css" rel="stylesheet" />
 <link href="Content/bootstrap-theme.css" rel="stylesheet" />
 <link href="Content/WindowManager.css" rel="stylesheet" />
+<link href="Content/quadTheme.css" rel="stylesheet" />
 <script src="Scripts/angular-ui/ui-bootstrap.js"></script>
 <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
 <script src="App/app.js"></script>
 <script src="App/config.routes.js"></script>
-<script src="App/Constants/SignalRHubs/signalRHubConfig.js"></script>
+<script src="App/Services/LocalStore/localDataStore.js"></script>
+<script src="App/Windows/Settings/settingsController.js"></script>
+<script src="App/Services/SignalR/HubConfig/signalRHubConfig.js"></script>
+<script src="App/Constants/SignalRResponceTypes/SignalRResponceTypes.js"></script>
 <script src="App/Factories/SignalR/SignalRHubProxy/signalRHubProxy.js"></script>
 <script src="App/Services/SignalR/ActiveQuads/activeQuads.js"></script>
 <script src="App/Services/SignalR/SignalRHub/signalRHub.js"></script>
 <script src="App/Services/MenuService/menuService.js"></script>
+<script src="App/Services/modalService/modelService.js"></script>
 <script src="App/Factories/WindowManager/windowManager.js"></script>
 <script src="App/Factories/ToolOptions/toolFactory.js"></script>
-<script src="App/Body/body.js"></script>
+<script src="App/routes/Body/body.js"></script>
 <script src="App/Header/header.js"></script>
 <script src="App/Directives/WindowDrag/windowDrag.js"></script>
 <head>
@@ -27,6 +32,6 @@
 </head>
 <body>
     <div data-ng-include="'/app/header/header.html'"></div>
-    <div data-ng-include="'/app/Body/Body.html'"></div>
+    <div data-ng-include="'/app/routes/Body/Body.html'"></div>
 </body>
 </html>

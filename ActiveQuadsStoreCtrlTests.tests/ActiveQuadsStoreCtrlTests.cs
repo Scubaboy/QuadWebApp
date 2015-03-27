@@ -24,7 +24,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
             var mockIActiveQuads = new Mock<IActiveQuads>();
             var mockIRepository = new Mock<IRepository<ActiveQuads>>();
 
-            mockIRepository.Setup(x => x.All).Returns(mockStore.AsQueryable);
+            mockIRepository.Setup(x => x.All).Returns(mockStore);
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
@@ -48,7 +48,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
             var mockIActiveQuads = new Mock<IActiveQuads>();
             var mockIRepository = new Mock<IRepository<ActiveQuads>>();
 
-            mockIRepository.Setup(x => x.All).Returns(mockStore.AsQueryable);
+            mockIRepository.Setup(x => x.All).Returns(mockStore);
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
@@ -72,7 +72,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
             var mockIActiveQuads = new Mock<IActiveQuads>();
             var mockIRepository = new Mock<IRepository<ActiveQuads>>();
 
-            mockIRepository.Setup(x => x.All).Returns(mockStore.AsQueryable);
+            mockIRepository.Setup(x => x.All).Returns(mockStore);
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
@@ -138,7 +138,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
             var mockIActiveQuads = new Mock<IActiveQuads>();
             var mockIRepository = new Mock<IRepository<ActiveQuads>>();
 
-            mockIRepository.Setup(x => x.All).Returns(mockStore.AsQueryable);
+            mockIRepository.Setup(x => x.All).Returns(mockStore);
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
@@ -162,7 +162,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
             var mockIActiveQuads = new Mock<IActiveQuads>();
             var mockIRepository = new Mock<IRepository<ActiveQuads>>();
 
-            mockIRepository.Setup(x => x.All).Returns(mockStore.AsQueryable);
+            mockIRepository.Setup(x => x.All).Returns(mockStore);
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 
@@ -192,7 +192,7 @@ namespace ActiveQuadsStoreCtrlTests.tests
             var mockIActiveQuads = new Mock<IActiveQuads>();
             var mockIRepository = new Mock<IRepository<ActiveQuads>>();
 
-            mockIRepository.Setup(x => x.All).Returns(mockStore.AsQueryable);
+            mockIRepository.Setup(x => x.All).Returns(mockStore);
 
             mockIActiveQuads.SetupGet(x => x.Quads).Returns(mockIRepository.Object);
 

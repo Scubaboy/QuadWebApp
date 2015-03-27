@@ -39,5 +39,18 @@
             activeMenu = subMenus[menuItemId];
         }
 
+        Object.defineProperty(this, 'selectedMenuTemplate', {
+            get: function () {
+                if (activeMenu = undefined) {
+                    return activeMenu.template;
+                }
+                else {
+                    return undefined;
+                }
+            }
+        });
+
+        Object.defineProperty(this,'');
+
     };
 })()

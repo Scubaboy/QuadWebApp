@@ -18,7 +18,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.TrackUpdatesMonit
 
         public ActiveQuadMon(IActiveReposIdProvider filterId, IUpdateTrackerRepos updateTrackers)
         {
-         //   this.updateTrackers = updateTrackers;
+            this.updateTrackers = updateTrackers;
             this.cancelToken = null;
             this.monitorTask = null;
             this.filterId = filterId;
@@ -33,20 +33,30 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.TrackUpdatesMonit
                 this.cancelToken = new CancellationTokenSource();
 
                 //Get starting snap shot of the current updates made
-                var currentUpdates = this.updateTrackers.TrackedUpdates.All.ToList();
+                var currentUpdates = this.updateTrackers.TrackedUpdates.All.Where(x => x.MadeBy != this.filterId.Id).ToList();
 
                 this.monitorTask = Task.Run(() =>
                      {
                          while (!this.cancelToken.Token.IsCancellationRequested)
                          {
-                             var updatesNow = this.updateTrackers.TrackedUpdates.All.ToList();
+                             var updatesNow = this.updateTrackers.TrackedUpdates.All.Where(x => x.MadeBy != this.filterId.Id).ToList();
 
-                             if (DateTime.Compare(updatesNow.Last().TimeStamp, currentUpdates.Last().TimeStamp) != 0)
+                             if (updatesNow.Any())
                              {
-                                 this.OnTrackUpdateMonitorChange(new UpdateTrackMonitorEvtArgs());
-                                 currentUpdates = updatesNow;
+                                 if (currentUpdates.Any())
+                                 {
+                                     if (DateTime.Compare(updatesNow.Last().TimeStamp, currentUpdates.Last().TimeStamp) != 0)
+                                     {
+                                         this.OnTrackUpdateMonitorChange(new UpdateTrackMonitorEvtArgs());
+                                         currentUpdates = updatesNow;
+                                     }
+                                 }
+                                 else
+                                 {
+                                     this.OnTrackUpdateMonitorChange(new UpdateTrackMonitorEvtArgs());
+                                     currentUpdates = updatesNow;
+                                 }
                              }
-
                              Thread.Sleep(1000);
                          }
                      }, this.cancelToken.Token);

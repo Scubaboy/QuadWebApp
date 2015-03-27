@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Ninject;
 using Ninject.Web.Common;
 using Owin;
+using QuadCtrl.Infrastructure.Config.WebConf_Reader;
 using QuadCtrl.Infrastructure.Dependecy_Resolver.Ninject;
 using QuadCtrl.Infrastructure.EntityFramework.DbContexts;
 using QuadCtrl.Infrastructure.EntityFramework.Entities;
@@ -29,12 +30,14 @@ namespace QuadCtrl
             //set up the IoC
             var kernel = new StandardKernel();
             var resolver = new NinjectSignalRDependencyResolver(kernel);
+            IConfigReader configReader = new WebConfigReader();
+            var conf = configReader.GetConfiguration();
 
             //Setup system config store binding.
             kernel.Bind<QuadDbContext>()
                 .To<QuadDbContext>()
-                .InSingletonScope()
-                .WithConstructorArgument("connectionString", "hh");
+                .InRequestScope()
+                .WithConstructorArgument("connectionString", conf.DbConnString);
             kernel.Bind<IActiveReposIdProvider>()
                 .To<BasicActiveReposIdProvider>()
                 .InRequestScope();

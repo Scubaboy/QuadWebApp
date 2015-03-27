@@ -7,5 +7,6 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Event_Arguments.UpdateTrackerM
 {
     public class UpdateTrackMonitorEvtArgs
     {
+
     }
 }

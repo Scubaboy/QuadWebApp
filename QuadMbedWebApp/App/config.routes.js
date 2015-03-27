@@ -23,7 +23,7 @@
             {
                 url: '/',
                 config: {
-                    templateUrl: 'app/body/body.html'
+                    templateUrl: 'app/routes/body/body.html'
                 }
             }
         ];

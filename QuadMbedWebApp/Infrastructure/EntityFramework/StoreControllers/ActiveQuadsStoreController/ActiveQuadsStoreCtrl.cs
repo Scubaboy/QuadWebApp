@@ -17,7 +17,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsSt
         IActiveQuads repos = null;
         ITrackUpdateMonitor updateMonitor;
 
-        public ActiveQuadsStoreCtrl(IActiveQuads activeQuads, ITrackUpdateMonitor updateMonitor)//.//, ITrackUpdateMonitor updateMonitor) //(IActiveQuads activeQuads,
+        public ActiveQuadsStoreCtrl(IActiveQuads activeQuads, ITrackUpdateMonitor updateMonitor)
         {
             this.repos = activeQuads;
             this.updateMonitor = updateMonitor;
@@ -96,10 +96,16 @@ namespace QuadCtrl.Infrastructure.EntityFramework.StoreControllers.ActiveQuadsSt
         public event EventHandler<EventArgs.ActiveQuadCtrlEventArgs> ActiveQuadChange;
 
 
-        public void Initialise()
+        public void Start()
         {
             this.updateMonitor.TrackUpdateMonitorChange += updateMonitor_TrackUpdateMonitorChange;
             this.updateMonitor.Start();
+        }
+
+        public void Stop()
+        {
+            this.updateMonitor.TrackUpdateMonitorChange -= updateMonitor_TrackUpdateMonitorChange;
+            this.updateMonitor.Stop();
         }
 
         void updateMonitor_TrackUpdateMonitorChange(object sender, UpdateTrackMonitorEvtArgs e)

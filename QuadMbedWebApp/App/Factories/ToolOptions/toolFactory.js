@@ -3,9 +3,9 @@
 
     var factoryId = "toolFct";
 
-    angular.module('app').factory(factoryId, ['windowManager','menuServiceId', toolFct]);
+    angular.module('app').factory(factoryId, ['modalService', 'menuServiceId', '$location', toolFct]);
 
-    function toolFct(windowManager, menuServiceId) {
+    function toolFct(modalService, menuServiceId, $location) {
         RegisterSubMenus()
 
         function RegisterSubMenus()
@@ -13,13 +13,14 @@
             menuServiceId.registerSubMenu([{
                 title: 'Select Sys Config',
                 isActive: true,
+                template: '/app/Windows/Settings/settings.html',
                 selectAction: function (){
-                    windowManager.addUIWindow({
-                        name: 'Settings',
-                        route: '/app/Windows/Settings/settings.html',
-                        width: 400,
-                        height: 300,
-                        showHeader: true
+                    modalService.custom({
+                        templateUrl: '/app/Windows/Settings/settings.html',
+                        controller: 'settingsController as vm',
+                        size: null,
+                        backdrop: 'static',
+                        title: "System Settings",
                     });
                 },
             },
@@ -27,21 +28,21 @@
                 title: 'Run Config',
                 isActive: false,
                 selectAction: function () {
-                    windowManager.addRunConfigWindow();
+                    //windowManager.addRunConfigWindow();
                 }
             },
             {
                 title: 'Save/Load Config',
                 isActive: false,
                 selectAction: function () {
-                    windowManager.addLoadConfigWindow();
+                   // windowManager.addLoadConfigWindow();
                 }
             },
             {
                 title: 'Tune PIDs',
                 isActive: false,
                 selectAction: function () {
-                    windowManager.addTunePIDsWindow();
+                   // windowManager.addTunePIDsWindow();
                 }
             }
             ], 'settingsSubMenu');
@@ -52,11 +53,13 @@
                 {
                     name: "Settings",
                     image: "../../Content/images/Setting-Icon.png",
-                    subMenuId: 'settingsSubMenu'
+                    subMenuId: 'settingsSubMenu',
+                    route:'/sysSettings'
                 },
                 {
                     name: "Kpi",
-                    image: "../../Content/images/Data Icon.png"
+                    image: "../../Content/images/Data Icon.png",
+                    route: '/sysKPIS'
                 }
             ];
         };

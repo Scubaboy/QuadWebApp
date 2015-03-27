@@ -3,24 +3,27 @@
 
     var serviceId = 'ActiveQuadsSigRService'
 
-    angular.module('app').service(serviceId, ['$q', 'signalRHub', 'signalRHubProxy', activeQuadsSigRService]);
+    angular.module('app').service(serviceId, ['$q', 'signalRHub', 'signalRHubProxy', 'SignalRResponceTypesConstant', 'localDataStoreService', activeQuadsSigRService]);
 
-    function activeQuadsSigRService($q, signalRHub, signalRHubProxy) {
+    function activeQuadsSigRService($q, signalRHub, signalRHubProxy, SignalRResponceTypesConstant, localDataStoreService) {
 
             var configProxy = null;
             var that = this;
             var hubActions = []; 
 
-            function activeQuadsUpdated (data, defer) {
+            function activeQuadsUpdated (data) {
                 console.log(data);
-                defer.resolve(data);
+                localDataStoreService.activeQuads = data;
             }
 
             this.initialise = function() {
                 configProxy = new signalRHubProxy.hubProxy(signalRHub.getHubProxyEntity("ActiveQuadHub"), $q);
 
+            
+
                 hubActions.push({
                     actionname: 'UpdateActiveQuads',
+                    type: SignalRResponceTypesConstant.responceTypes.serverBroadcastUpdate,
                     callback: activeQuadsUpdated,
                 });
 

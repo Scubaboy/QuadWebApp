@@ -8,7 +8,7 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Interfaces
 {
     public interface IRepository<T>
     {
-        IEnumerable<T> All { get; }
+        IList<T> All { get; }
         void Add(T item);
         void Remove(T item);
         void Update(T item);

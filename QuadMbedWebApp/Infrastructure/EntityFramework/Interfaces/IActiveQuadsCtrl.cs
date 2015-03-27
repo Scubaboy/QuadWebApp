@@ -14,7 +14,8 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Interfaces
         void Add(ActiveQuads newQuad);
         void Update(ActiveQuads quad);
         List<ActiveQuads> AvailableQuads();
-        void Initialise();
+        void Start();
+        void Stop();
         event EventHandler<ActiveQuadCtrlEventArgs> ActiveQuadChange;
     }
 }

@@ -19,5 +19,9 @@
             }
             return menuServiceId.getSubMenu().length > 0;
         };
+
+        vm.subMenuClick = function (menu) {
+            vm.route = menu.template;
+        }
     };
 })()

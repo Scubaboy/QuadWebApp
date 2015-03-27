@@ -2,9 +2,9 @@
     'use strict'
 
     var factoryId = 'signalRHubProxy'
-    angular.module('app').factory(factoryId, [signalRHubProxy]);
+    angular.module('app').factory(factoryId,  ['SignalRResponceTypesConstant', signalRHubProxy]);
 
-    function signalRHubProxy() {
+    function signalRHubProxy(SignalRResponceTypesConstant) {
         function hubProxy(hubProxy, qDefer) {
             var hubProxyInternal = hubProxy;
             var hubActionQueue = [];
@@ -27,10 +27,8 @@
             this.setProxyHubActions = function(hubActions) {
                 hubActions.forEach(function (hubAction) {
                     switch (hubAction.type) {
-                        case serverBroadcastUpdate:
-                            break;
-                        case serverRequestResponse:
-                            hubProxyInternal.proxy.on(hubAction.actionname, createCallbackFunc(hubAction.actionname, hubAction.callback));
+                        case SignalRResponceTypesConstant.responceTypes.serverBroadcastUpdate:
+                            hubProxyInternal.proxy.on(hubAction.actionname, hubAction.callback);
                             break;
                     }
                 });
@@ -45,25 +43,18 @@
             this.callHubActionRequest = function (hubActionName, parameters) {
                 var requestDefer = qDefer.defer();
 
-                if (!hubProxyInternal.hubReady) {
-                    hubActionQueue.push({
-                        defer: requestDefer,
-                        parameters: parameters,
-                        hubActionName: hubActionName
+                if (parameters != undefined) {
+                    hubProxyInternal.proxy.invoke(hubActionName, parameters).done(function (result) {
+                        requestDefer.resolve(result);
+                    }).fail(function (error) {
+                        requestDefer.reject(error);
                     });
                 } else {
-                    hubActionQueue.push({
-                        defer: requestDefer,
-                        parameters: parameters,
-                        hubActionName: hubActionName
+                    hubProxyInternal.proxy.invoke(hubActionName).done(function () {
+                        requestDefer.resolve();
+                    }).fail(function (error) {
+                        requestDefer.reject(error);
                     });
-                    if (hubActionQueue.length === 1) {
-                        if (parameters != undefined) {
-                            hubProxyInternal.proxy.invoke(hubActionName, parameters);
-                        } else {
-                            hubProxyInternal.proxy.invoke(hubActionName);
-                        }
-                    }
                 }
 
                 return requestDefer.promise;

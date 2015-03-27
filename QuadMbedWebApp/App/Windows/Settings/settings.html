@@ -1,21 +1,18 @@
-﻿<div class="container-fluid">
-    <form class="form-horizontal" data-ng-submit="">
+﻿<div class="container quadShadow" data-ng-controller="settingsController as vm">
+    <form class="form-horizontal" data-ng-submit="vm.submit()">
         <div class="page-header">
             <h1 style="text-align:center">Select Quad</h1>
         </div>
         <div class="form-group">
             <label for="dropdownMenu2" class="col-sm-3 control-label">Select quad</label>
             <div class="col-md-6">
-                <select class="form-control" id="dropdownMenu2">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-                <p class="form-control-static" style="padding-top:6px">Identification {{selectedQuadDetails.id}}</p>
-                <p class="form-control-static">Platform Configuration {{selectedQuadDetails.platformConfig}}</p>
-                <p class="form-control-static">Telemtry Feed {{selectedQuadDetails.telemetryFeeds}}</p>
+                <select class="form-control" id="dropdownMenu2"
+                        ng-model="vm.selectedQuad"
+                        ng-options="quad.QuadId for quad in vm.quads"
+                        ng-change=" vm.setSelected()"></select>
+                <p class="form-control-static" style="padding-top:6px">Identification {{vm.selectedQuadDetails.id}}</p>
+                <p class="form-control-static">Platform Configuration {{vm.selectedQuadDetails.platformConfig}}</p>
+                <p class="form-control-static">Telemtry Feed {{vm.selectedQuadDetails.telemetryFeeds}}</p>
             </div>
         </div>
         <div class="form-group">

@@ -20,11 +20,11 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
             this.db = db;
         }
 
-        public IEnumerable<ActiveQuads> All
+        public IList<ActiveQuads> All
         {
             get 
             {
-                return this.dbSet;
+                return this.dbSet.ToList();
             } 
         }
 

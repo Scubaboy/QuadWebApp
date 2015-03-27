@@ -20,11 +20,11 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Passive
             this.db = db;
         }
 
-        public IEnumerable<UpdateTracker> All
+        public IList<UpdateTracker> All
         {
             get 
             {
-                return this.dbSet;
+                return this.dbSet.ToList();
             } 
         }
 

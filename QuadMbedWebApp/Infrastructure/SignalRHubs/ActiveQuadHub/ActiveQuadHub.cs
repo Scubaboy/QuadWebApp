@@ -32,12 +32,25 @@ namespace QuadCtrl.Infrastructure.SignalRHubs.ActiveQuadHub
             //Notify all connected clients of the change
             var activeQuads = this.activeQuadCtrl.AvailableQuads();
 
-            this.Clients.All.ActiveQuadUpdated(activeQuads);
+            this.Clients.All.ActiveQuadUpdated(this.activeQuadCtrl.AvailableQuads().Select(x => x.ToModel()));
         }
 
-        public void ClientUpdateActiveQuad(ActiveQuad quad)
+        public bool TryTakeQuad(ActiveQuad quad)
         {
+            var takeResult = false;
 
+            if (!this.activeQuadCtrl.AvailableQuads().Find(x => x.QuadId == quad.QuadId).InUse)
+            {
+                var quadToTake = this.activeQuadCtrl.AvailableQuads().Find(x => x.QuadId == quad.QuadId);
+
+                quadToTake.InUse = true;
+
+                this.activeQuadCtrl.Update(quadToTake);
+
+                takeResult = true;
+            }
+
+            return takeResult;
         }
 
         public override Task OnConnected()
@@ -47,32 +60,15 @@ namespace QuadCtrl.Infrastructure.SignalRHubs.ActiveQuadHub
             if (ActiveQuadConnections.ConnectedIds.Count == 1)
             {
                 this.activeQuadCtrl.ActiveQuadChange += activeQuadCtrl_ActiveQuadChange;
+                this.activeQuadCtrl.Start();
             }
 
             //Send the new client available quad list
-            this.Clients.Client(Context.ConnectionId).UpdateActiveQuads(new List<ActiveQuad>
-                {
-                    new ActiveQuad
-                    {
-                        QuadId = "Quad1",
-                        SupportedComms = CommsOptions.GSMModem,
-                        SupportedIMU = IMUOpions.DCM,
-                        SupportedAlt = AltimeterOptions.CGPSALtic,
-                        SupportGPS = GPSOptions.MKV11,
-                        InUse = false
-                    },
-                    new ActiveQuad
-                    {
-                        QuadId = "Quad2",
-                        SupportedComms = CommsOptions.GSMModem,
-                        SupportedIMU = IMUOpions.DCM,
-                        SupportedAlt = AltimeterOptions.CGPSALtic,
-                        SupportGPS = GPSOptions.MKV11,
-                        InUse = false
-                    }
-                });
-                //this.activeQuadCtrl.AvailableQuads().Where(x => !x.Inuse).Select(x => x.ToModel()).ToList());
-
+            this.Clients.Client(Context.ConnectionId).
+                UpdateActiveQuads(this.activeQuadCtrl.AvailableQuads().
+                Where(x => !x.InUse).
+                Select(x => x.ToModel()));
+           
             return base.OnConnected();
         }
 
@@ -82,6 +78,7 @@ namespace QuadCtrl.Infrastructure.SignalRHubs.ActiveQuadHub
             if (!ActiveQuadConnections.ConnectedIds.Any())
             {
                 this.activeQuadCtrl.ActiveQuadChange -= activeQuadCtrl_ActiveQuadChange;
+                this.activeQuadCtrl.Stop();
             }
 
             return base.OnDisconnected(stopCalled);

@@ -14,14 +14,14 @@ namespace QuadCtrl.Infrastructure.EntityFramework.Repositories.Active
         private QuadDbContext db;
         private IActiveReposIdProvider activeId;
 
-        public ActiveQuadRepositoryActive(IRepository<ActiveQuads> passiveRepos, QuadDbContext db, IActiveReposIdProvider activeId) //QuadDbContext db,
+        public ActiveQuadRepositoryActive(IRepository<ActiveQuads> passiveRepos, QuadDbContext db, IActiveReposIdProvider activeId)
         {
             this.passiveRepos = passiveRepos;
             this.db = db;
             this.activeId = activeId;
         }
 
-        public IEnumerable<ActiveQuads> All
+        public IList<ActiveQuads> All
         {
             get { return this.passiveRepos.All; }
         }

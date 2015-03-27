@@ -1,0 +1,13 @@
+﻿<div data-ng-controller="bodyCtrl as bodyvm">
+    <nav class="navbar navbar-default" data-ng-show="bodyvm.showSubMenuBar()">
+        <div class="container-fluid">
+            <ul class="nav nav-pills">
+                <li role="presentation" data-ng-repeat=" item in bodyvm.subMenu()" data-ng-show="item.isActive">
+                    <a style="margin-top:10px" data-ng-click="bodyvm.subMenuClick(item)">{{item.title}}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div data-ng-include="bodyvm.route"></div>
+
+    </div>

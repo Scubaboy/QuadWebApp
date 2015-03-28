@@ -9,12 +9,23 @@
         var activeToolBarOption = undefined;
         var activeToolBarMenu = undefined;
         var activeView = undefined;
-
+        var viewChange = undefined;
         var theViewCtrl = new viewFactory.viewBuilder();
 
         Object.defineProperty(this, 'toolBar', {
             get: function () {
                 return theViewCtrl.toolBar;
+            }
+        });
+
+        Object.defineProperty(this, 'quadControl', {
+            get: function () {
+                return theViewCtrl.quadControl;
+            }
+        })
+        Object.defineProperty(this, 'userSettings', {
+            get: function () {
+                return theViewCtrl.userSettings;
             }
         });
 
@@ -42,15 +53,27 @@
             }
         });
 
+        Object.defineProperty(this, 'onViewChange', {
+            set: function (newOnViewChange) {
+                viewChange = newOnViewChange;
+            }
+        });
+
         Object.defineProperty(this, 'setActiveMenuView', {
             set: function (newActiveMenuView) {
-                activeView = theViewCtrl.toolBarMenuViews[newActiveMenuView.title];
+                activeView = theViewCtrl.toolBarMenuViews[newActiveMenuView.menuViewId];
+                if (viewChange != undefined) {
+                    viewChange();
+                }
+               
             }
         });
 
         Object.defineProperty(this, 'activeMenuView', {
             get: function () {
-                if (activeView != undefned) {
+                console.log("checking for view.")
+                if (activeView != undefined) {
+                    console.log('got a menu view');
                     return activeView.view;
                 }
                 else {
@@ -61,7 +84,8 @@
 
         Object.defineProperty(this, 'activeMenuViewController', {
             get: function () {
-                if (activeView != undefned) {
+                
+                if (activeView != undefined) {
                     return activeView.controller;
                 }
                 else {
@@ -71,6 +95,10 @@
         });
         this.ClearActiveView = function () {
             activeView = undefined;
+
+            if (viewChange != undefined) {
+                viewChange();
+            }
         };
     }
 })()

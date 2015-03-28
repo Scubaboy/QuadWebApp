@@ -50,7 +50,6 @@
             }
         });
 
-        Object.defineProperty(this,'');
 
     };
 })()

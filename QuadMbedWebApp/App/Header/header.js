@@ -3,14 +3,18 @@
 
     var controllerId = 'headerCtrl';
 
-    angular.module('app').controller(controllerId, ['toolFct', headerCtrl]);
+    angular.module('app').controller(controllerId, ['viewService', headerCtrl]);
 
-    function headerCtrl(toolFct) {
+    function headerCtrl(viewService) {
         var vm = this;
 
-        vm.toolOptions = toolFct.tools();
-        vm.userSettings = toolFct.userSettings();
-        vm.quadControl = toolFct.quadControl();
+        vm.toolOptions = viewService.toolBar;
+        vm.userSettings = viewService.userSettings;
+        vm.quadControl = viewService.quadControl;
+
+        vm.toolBarClick = function (toolBarItem) {
+            viewService.activeToolBarOption = toolBarItem;
+        }
 
         vm.click = function (item) {
             toolFct.clickAction(item);

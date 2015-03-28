@@ -19,19 +19,20 @@
             var toolBar = [
                 {
                     name: "Settings",
-                    image: "../../Content/images/Setting-Icon.png",
+                    image: "../../../../../Content/images/Setting-Icon.png",
                     route: '/sysSettings'
                 },
                 {
                     name: "Kpi",
-                    image: "../../Content/images/Data Icon.png",
+                    image: "../../../../../Content/images/Data Icon.png",
                     route: '/sysKPIS'
                 }
             ];
 
-            toolbarMenus['Settings'] = [
+            toolBarMenus['Settings'] = [
                 {
                     title: 'Select Sys Config',
+                    menuViewId: 1,
                     isActive: true
                 },
                 {
@@ -48,19 +49,25 @@
                 }
             ];
 
-            toolBarMenuViews['Select Sys Config'] = {
+            toolBarMenuViews[1] = {
                 view: '/app/modules/viewManager/views/Settings/settings.html',
-                controller:''
+                controller: 'settingsController as vm'
             };
 
 
             var userSettings = [
                 {
                     name: "userSettings",
-                    image: "../../content/images/emptyProfile.png"
+                    image: "../../../../../content/images/emptyProfile.png"
                 }
             ];
 
+            var quadControl = [
+                    {
+                        name: "quadFlightCtrl",
+                        image: "../../../../../content/images/QuadTool.png"
+                    }
+            ];
 
             Object.defineProperty(this, 'toolBar', {
                 get: function () {
@@ -79,6 +86,19 @@
                     return toolBarMenuViews;
                 }
             });
+
+            Object.defineProperty(this, 'userSettings', {
+                get: function () {
+                    return userSettings;
+                }
+            });
+
+            Object.defineProperty(this, 'quadControl', {
+                get: function () {
+                    return quadControl;
+                }
+            });
+
         };
 
         return factory;

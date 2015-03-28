@@ -3,25 +3,33 @@
 
     var controllerId = 'bodyCtrl';
 
-    angular.module('app').controller(controllerId, ['windowManager', 'menuServiceId', bodyCtrl]);
+    angular.module('app').controller(controllerId, ['viewService', bodyCtrl]);
 
-    function bodyCtrl(windowManager, menuServiceId) {
+    function bodyCtrl(viewService) {
         var vm = this;
 
-        vm.windows = windowManager.getWindows();
+        function viewChange() {
+            vm.route = viewService.activeMenuView;
+        }
+        
+        viewService.onViewChange = viewChange;
+
         vm.subMenu = function () {
-            return menuServiceId.getSubMenu();
+            return viewService.toolBarMenus;
         }
 
         vm.showSubMenuBar = function () {
-            if (menuServiceId.getSubMenu() == undefined) {
+            if (viewService.toolBarMenus == undefined) {
                 return false;
             }
-            return menuServiceId.getSubMenu().length > 0;
+            return viewService.toolBarMenus.length > 0;
         };
 
         vm.subMenuClick = function (menu) {
-            vm.route = menu.template;
+            console.log("menu clicked")
+            viewService.setActiveMenuView = menu;
         }
+
+        
     };
 })()

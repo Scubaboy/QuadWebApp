@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\modules\viewManager\directives\dynamicController.js" />
     <Content Include="App\modules\viewManager\factories\viewFactory.js" />
     <Content Include="App\modules\viewManager\services\viewService.js" />
     <Content Include="App\modules\viewManager\viewManager.js" />

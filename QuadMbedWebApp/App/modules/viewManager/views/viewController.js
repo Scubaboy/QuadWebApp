@@ -9,5 +9,6 @@
         var vm = this;
 
         vm.assignedController = viewService.activeMenuViewController;
+        vm.templatePath = viewService.activeViewTemplate;
     }
 })()

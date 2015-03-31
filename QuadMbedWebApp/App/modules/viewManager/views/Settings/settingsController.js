@@ -3,9 +3,9 @@
 
     var controllerId = 'settingsController';
 
-    angular.module('app').controller(controllerId, ['localDataStoreService', 'ActiveQuadsSigRService', settingsControllerFct]);
+    angular.module('app').controller(controllerId, ['localDataStoreService', 'ActiveQuadsSigRService', 'viewService', settingsControllerFct]);
 
-    function settingsControllerFct(localDataStoreService, ActiveQuadsSigRService) {
+    function settingsControllerFct(localDataStoreService, ActiveQuadsSigRService, viewService) {
         var vm = this;
 
         vm.selected;
@@ -31,7 +31,8 @@
             // Try and take controll of the chosen active quad.
             ActiveQuadsSigRService.tryTakeQuad(vm.selectedQuad).then(function (resultofTake) {
                 if (resultofTake) {
-
+                    localDataStoreService.selectedQuad = vm.selectedQuad;
+                    viewService.ClearActiveView();
                 }
                 else {
                     //Display warning and ask user to try and select another quad from the updated list.

@@ -9,7 +9,7 @@
         var vm = this;
 
         function viewChange() {
-            vm.route = viewService.activeMenuView;
+            vm.route = viewService.containerView;
         }
         
         viewService.onViewChange = viewChange;

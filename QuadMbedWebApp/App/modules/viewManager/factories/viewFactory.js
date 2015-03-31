@@ -3,9 +3,9 @@
 
     var factoryId = 'viewFactory';
 
-    angular.module('viewManager').factory(factoryId, [viewFactoryFct]);
+    angular.module('viewManager').factory(factoryId, ['localDataStoreService', viewFactoryFct]);
 
-    function viewFactoryFct() {
+    function viewFactoryFct(localDataStoreService) {
         var factory = {
             viewBuilder: viewBuilder
         };
@@ -33,27 +33,40 @@
                 {
                     title: 'Select Sys Config',
                     menuViewId: 1,
-                    isActive: true
+                    isActive: function () {
+                        return localDataStoreService.activeQuads != null;
+                    }
                 },
                 {
-                     title: 'Run Config',
-                     isActive: false,
+                    title: 'Run Config',
+                    menuViewId: 2,
+                    isActive: function () {
+                        return localDataStoreService.selectedQuad != null;
+                    }
                 },
                 {
                      title: 'Save/Load Config',
-                     isActive: false,
+                     isActive: function () {
+                         return false;
+                     }
                 },
                 {
                      title: 'Tune PIDs',
-                     isActive: false,
+                     isActive: function () {
+                         return false;
+                     }
                 }
             ];
 
             toolBarMenuViews[1] = {
-                view: '/app/modules/viewManager/views/Settings/settings.html',
+                view: "'/app/modules/viewManager/views/Settings/Settings.html'",
                 controller: 'settingsController as vm'
             };
 
+            toolBarMenuViews[2] = {
+                view: "'/app/modules/viewManager/views/config/selectConfig.html'",
+                controller: 'selectConfigController as vm'
+            };
 
             var userSettings = [
                 {

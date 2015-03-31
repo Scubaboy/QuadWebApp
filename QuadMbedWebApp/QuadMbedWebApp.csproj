@@ -105,16 +105,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\modules\LocalStore\localStore.js" />
     <Content Include="App\modules\viewManager\directives\dynamicController.js" />
     <Content Include="App\modules\viewManager\factories\viewFactory.js" />
     <Content Include="App\modules\viewManager\services\viewService.js" />
     <Content Include="App\modules\viewManager\viewManager.js" />
+    <Content Include="App\modules\viewManager\views\viewContainer.html" />
     <Content Include="App\modules\viewManager\views\viewController.js" />
     <Content Include="App\routes\Body\body.html" />
     <Content Include="App\routes\Body\body.js" />
     <Content Include="App\config.routes.js" />
     <Content Include="App\Constants\SignalRResponceTypes\SignalRResponceTypes.js" />
-    <Content Include="App\Services\LocalStore\localDataStore.js" />
+    <Content Include="App\modules\LocalStore\Services\localDataStore.js" />
     <Content Include="App\Services\modalService\modelService.js" />
     <Content Include="App\Services\SignalR\HubConfig\signalRHubConfig.js" />
     <Content Include="App\Directives\WindowDrag\windowDrag.js" />

@@ -3,7 +3,7 @@
 
     var serviceId = 'localDataStoreService';
 
-    angular.module('app').service(serviceId, [localDataStoreServiceFct]);
+    angular.module('localStore').service(serviceId, [localDataStoreServiceFct]);
 
     function localDataStoreServiceFct() {
         var localStore = null;
@@ -13,6 +13,7 @@
             localStore = {
                 activeQuads: null,
                 selectedQuad: null,
+                selectedConfig: null
             };
         };
 
@@ -33,6 +34,16 @@
             set: function (newSelectedQuad) {
                 localStore.selectedQuad = newSelectedQuad;
             }
-        })
+        });
+
+        Object.defineProperty(this, 'selectedConfig', {
+            get: function () {
+                return localStore.selectedConfig;
+            },
+
+            set: function (newSelectedConfig) {
+                localStore.selectedConfig = newSelectedConfig;
+            }
+        });
     };
 })()

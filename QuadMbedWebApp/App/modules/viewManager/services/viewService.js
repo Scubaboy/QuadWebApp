@@ -10,6 +10,7 @@
         var activeToolBarMenu = undefined;
         var activeView = undefined;
         var viewChange = undefined;
+        var containerView = '';
         var theViewCtrl = new viewFactory.viewBuilder();
 
         Object.defineProperty(this, 'toolBar', {
@@ -62,6 +63,8 @@
         Object.defineProperty(this, 'setActiveMenuView', {
             set: function (newActiveMenuView) {
                 activeView = theViewCtrl.toolBarMenuViews[newActiveMenuView.menuViewId];
+                containerView = '/app/modules/viewManager/views/viewContainer.html';
+
                 if (viewChange != undefined) {
                     viewChange();
                 }
@@ -71,9 +74,7 @@
 
         Object.defineProperty(this, 'activeMenuView', {
             get: function () {
-                console.log("checking for view.")
                 if (activeView != undefined) {
-                    console.log('got a menu view');
                     return activeView.view;
                 }
                 else {
@@ -93,9 +94,26 @@
                 }
             }
         });
+
+        Object.defineProperty(this, 'activeViewTemplate', {
+            get: function () {
+                if (activeView != undefined) {
+                    return activeView.view;
+                }
+                else {
+                    return undefined;
+                }
+            }
+        });
+
+        Object.defineProperty(this, 'containerView', {
+            get: function () {
+                return containerView;
+            }
+        })
         this.ClearActiveView = function () {
             activeView = undefined;
-
+            containerView = '';
             if (viewChange != undefined) {
                 viewChange();
             }

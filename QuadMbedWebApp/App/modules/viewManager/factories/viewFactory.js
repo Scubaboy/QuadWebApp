@@ -31,24 +31,18 @@
 
             toolBarMenus['Settings'] = [
                 {
-                    title: 'Select Sys Config',
+                    title: 'Select Quad',
                     menuViewId: 1,
                     isActive: function () {
                         return localDataStoreService.activeQuads != null;
                     }
                 },
                 {
-                    title: 'Run Config',
+                    title: 'Configure Quad',
                     menuViewId: 2,
                     isActive: function () {
                         return localDataStoreService.selectedQuad != null;
                     }
-                },
-                {
-                     title: 'Save/Load Config',
-                     isActive: function () {
-                         return false;
-                     }
                 },
                 {
                      title: 'Tune PIDs',
@@ -64,8 +58,8 @@
             };
 
             toolBarMenuViews[2] = {
-                view: "'/app/modules/viewManager/views/config/selectConfig.html'",
-                controller: 'selectConfigController as vm'
+                view: "'/app/modules/viewManager/views/configureQuad/configureQuad.html'",
+                controller: 'configureQuadController as vm'
             };
 
             var userSettings = [

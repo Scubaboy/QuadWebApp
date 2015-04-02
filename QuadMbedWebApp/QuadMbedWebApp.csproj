@@ -110,6 +110,8 @@
     <Content Include="App\modules\viewManager\factories\viewFactory.js" />
     <Content Include="App\modules\viewManager\services\viewService.js" />
     <Content Include="App\modules\viewManager\viewManager.js" />
+    <Content Include="App\modules\viewManager\views\configureQuad\configureQuad.html" />
+    <Content Include="App\modules\viewManager\views\configureQuad\configureQuadController.js" />
     <Content Include="App\modules\viewManager\views\viewContainer.html" />
     <Content Include="App\modules\viewManager\views\viewController.js" />
     <Content Include="App\routes\Body\body.html" />

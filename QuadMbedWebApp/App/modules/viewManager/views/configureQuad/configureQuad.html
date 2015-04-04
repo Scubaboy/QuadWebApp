@@ -10,21 +10,52 @@
 <form class="form-horizontal col-md-8" data-ng-submit="vm.newSubmit()" data-ng-if="vm.newConfigSelected">
     <div class="form-group">
         <h5 style="text-align:center;">Select Configuration</h5>
-        <tabset class="tab-animation">
-            <tab heading="IMU">
-                <h3>IMU</h3>
-            </tab>
-            <tab heading="GPS">
-                <h3>GPS</h3>
-            </tab>
-            <tab heading="Altimeter">
-                <h3>Altimeter</h3>
-            </tab>
-            <tab heading="Motor">
-                <h3>Motor</h3>
-            </tab>
-        </tabset>
+        <div class="row">
+            <div class="col-sm-3">
+                <label for="imuDropdownMenu" class="control-label">IMU Options</label>
+                <select class="form-control" id="imuDropdownMenu"
+                        ng-model="vm.imuSelection"
+                        ng-options="imu.type for imu in vm.imuOptions"
+                        ng-change=" vm.setSelected()"></select>
 
+            </div>
+            <div class="col-sm-3 col-sm-offset-2">
+                <label for="gpsDropdownMenu" class="control-label">GPS Options</label>
+                <select class="form-control" id="gpsDropdownMenu"
+                        ng-model="vm.gpsSelection"
+                        ng-options="gps.type for gps in vm.gpsOptions"
+                        ng-change=" vm.setSelected()"></select>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label for="altDropdownMenu" class="control-label">Altimeter Options</label>
+                <select class="form-control" id="altDropdownMenu"
+                        ng-model="vm.altSelection"
+                        ng-options="alt.type for alt in vm.altOptions"
+                        ng-change=" vm.setSelected()"></select>
+
+            </div>
+            <div class="col-sm-3 col-sm-offset-2">
+                <label for="commsDropdownMenu" class="control-label">Comms Options</label>
+                <select class="form-control" id="commsDropdownMenu"
+                        ng-model="vm.commsSelection"
+                        ng-options="comms.type for comms in vm.commsOptions"
+                        ng-change=" vm.setSelected()"></select>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label for="frameDropdownMenu" class="control-label">Frame Options</label>
+                <select class="form-control" id="frameDropdownMenu"
+                        ng-model="vm.frameSelection"
+                        ng-options="frame.type for frame in vm.frameOptions"
+                        ng-change=" vm.setSelected()"></select>
+
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-10 col-sm-10">

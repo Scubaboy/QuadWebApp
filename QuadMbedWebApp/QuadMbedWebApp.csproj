@@ -105,6 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\modules\dragDrop\directives\draggable.js" />
+    <Content Include="App\modules\dragDrop\directives\droppable.js" />
+    <Content Include="App\modules\dragDrop\drapDrop.js" />
     <Content Include="App\modules\LocalStore\localStore.js" />
     <Content Include="App\modules\viewManager\directives\dynamicController.js" />
     <Content Include="App\modules\viewManager\factories\viewFactory.js" />
@@ -139,6 +142,7 @@
     <Content Include="Content\Images\Data Icon.png" />
     <Content Include="Content\Images\emptyProfile.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\QuadConfig.png" />
     <Content Include="Content\Images\QuadTool.png" />
     <Content Include="Content\Images\Setting-icon.png" />
     <Content Include="Content\quadTheme.css" />

@@ -12,6 +12,7 @@
         //'common.bootstrap', // bootstrap dialog wrapper functions
         'viewManager',
         'localStore',
+        'dragDrop',
         //// 3rd Party Modules
         'ui.bootstrap',     // ui-bootstrap (ex: carousel, pagination, dialog)
         //'dx'

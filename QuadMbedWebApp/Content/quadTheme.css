@@ -31,3 +31,9 @@
 .tab-animation > .tab-content > .tab-pane.active-add {
     opacity: 0;
 }
+
+.centeredImage
+    {
+    margin: 0 auto;
+    display:block;
+    }

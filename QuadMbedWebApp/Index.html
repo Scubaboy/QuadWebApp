@@ -1,45 +1,54 @@
 ﻿<!DOCTYPE html>
 <html data-ng-app="app" xmlns="http://www.w3.org/1999/xhtml">
-
-<script src="Scripts/angular.js"></script>
-<script src="Scripts/angular-route.js"></script>
-<script src="Scripts/angular-animate.min.js"></script>
-<script src="Scripts/jquery-1.9.1.js"></script>
-<script src="Scripts/jquery.signalR-2.2.0.js"></script>
-<link href="Content/bootstrap.css" rel="stylesheet" />
-<link href="Content/bootstrap-theme.css" rel="stylesheet" />
-<link href="Content/WindowManager.css" rel="stylesheet" />
-<link href="Content/quadTheme.css" rel="stylesheet" />
-<script src="Scripts/angular-ui/ui-bootstrap.js"></script>
-<script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
-<script src="App/app.js"></script>
-<script src="App/modules/LocalStore/localStore.js"></script>
-<script src="App/modules/LocalStore/Services/localDataStore.js"></script>
-<script src="App/modules/viewManager/viewManager.js"></script>
-<script src="App/modules/viewManager/directives/dynamicController.js"></script>
-<script src="App/modules/viewManager/views/viewController.js"></script>
-<script src="App/modules/viewManager/services/viewService.js"></script>
-<script src="App/modules/viewManager/factories/viewFactory.js"></script>
-<script src="App/modules/viewManager/views/Settings/settingsController.js"></script>
-<script src="App/modules/viewManager/views/configureQuad/configureQuadController.js"></script>
-<script src="App/config.routes.js"></script>
-<script src="App/Windows/Settings/settingsController.js"></script>
-<script src="App/Services/SignalR/HubConfig/signalRHubConfig.js"></script>
-<script src="App/Constants/SignalRResponceTypes/SignalRResponceTypes.js"></script>
-<script src="App/Factories/SignalR/SignalRHubProxy/signalRHubProxy.js"></script>
-<script src="App/Services/SignalR/ActiveQuads/activeQuads.js"></script>
-<script src="App/Services/SignalR/SignalRHub/signalRHub.js"></script>
-<script src="App/Services/MenuService/menuService.js"></script>
-<script src="App/Services/modalService/modelService.js"></script>
-<script src="App/Factories/WindowManager/windowManager.js"></script>
-<script src="App/Factories/ToolOptions/toolFactory.js"></script>
-<script src="App/routes/Body/body.js"></script>
-<script src="App/Header/header.js"></script>
-<script src="App/modules/dragDrop/drapDrop.js"></script>
-<script src="App/modules/dragDrop/directives/draggable.js"></script>
-<script src="App/modules/dragDrop/directives/droppable.js"></script>
-<script src="App/Directives/WindowDrag/windowDrag.js"></script>
 <head>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/WindowManager.css" rel="stylesheet" />
+    <link href="Content/quadTheme.css" rel="stylesheet" />
+    <link href="Content/side-menu.css" rel="stylesheet" />
+    <script src="Scripts/angular-ui/ui-bootstrap.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="App/app.js"></script>
+    <script src="App/modules/LocalStore/localStore.js"></script>
+    <script src="App/modules/LocalStore/Services/localDataStore.js"></script>
+    <script src="App/modules/viewManager/viewManager.js"></script>
+    <script src="App/modules/viewManager/directives/dynamicController.js"></script>
+    <script src="App/modules/viewManager/views/viewController.js"></script>
+    <script src="App/modules/viewManager/services/viewService.js"></script>
+    <script src="App/modules/viewManager/factories/viewFactory.js"></script>
+    <script src="App/modules/viewManager/views/Settings/settingsController.js"></script>
+    <script src="App/modules/viewManager/views/configureQuad/configureQuadController.js"></script>
+    <script src="App/config.routes.js"></script>
+    <script src="App/Windows/Settings/settingsController.js"></script>
+    <script src="App/Services/SignalR/HubConfig/signalRHubConfig.js"></script>
+    <script src="App/Constants/SignalRResponceTypes/SignalRResponceTypes.js"></script>
+    <script src="App/Factories/SignalR/SignalRHubProxy/signalRHubProxy.js"></script>
+    <script src="App/Services/SignalR/ActiveQuads/activeQuads.js"></script>
+    <script src="App/Services/SignalR/SignalRHub/signalRHub.js"></script>
+    <script src="App/Services/MenuService/menuService.js"></script>
+    <script src="App/Services/modalService/modelService.js"></script>
+    <script src="App/Factories/WindowManager/windowManager.js"></script>
+    <script src="App/Factories/ToolOptions/toolFactory.js"></script>
+    <script src="App/routes/Body/body.js"></script>
+    <script src="App/Header/header.js"></script>
+    <script src="App/modules/dragDrop/drapDrop.js"></script>
+    <script src="App/modules/dragDrop/directives/draggable.js"></script>
+    <script src="App/modules/dragDrop/directives/droppable.js"></script>
+    <script src="App/Directives/WindowDrag/windowDrag.js"></script>
+    <script src="App/modules/EnumMapper/enumMapper.js"></script>
+    <script src="App/modules/EnumMapper/factories/enumFct.js"></script>
+    <script src="App/modules/configMapper/ConfigMapper.js"></script>
+    <script src="App/modules/configMapper/services/telemetryMapper.js"></script>
+    <script src="App/modules/configMapper/services/altimeterMapper.js"></script>
+    <script src="App/modules/configMapper/services/gpsMapper.js"></script>
+    <script src="App/modules/configMapper/services/imuMapper.js"></script>
+    <script src="App/modules/ConfigurationManager/configurationManager.js"></script>
+    <script src="App/modules/ConfigurationManager/services/sourceConfigMgr.js"></script>
+    <script src="Scripts/underscore.js"></script>
     <title>Quad</title>
 </head>
 <body>

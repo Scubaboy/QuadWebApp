@@ -7,7 +7,9 @@
 
     function droppableFct() {
         return {
-           
+            scope: {
+                drop: '&'
+            },
             link: function(scope, element) {
                 // again we need the native object
                 var el = element[0];
@@ -51,14 +53,15 @@
                       this.classList.remove('over');
           
                       var item = document.getElementById(e.dataTransfer.getData('Text'));
-                      this.appendChild(item);
+                      var parent = item.parentNode
+                      parent.removeChild(item);
                       // call the passed drop function
-                     // scope.$apply(function(scope) {
-                     //     var fn = scope.drop();
-                     //     if ('undefined' !== typeof fn) {            
-                     //         fn(item);
-                     //     }
-                     // });
+                      scope.$apply(function(scope) {
+                          var fn = scope.drop();
+                          if ('undefined' !== typeof fn) {            
+                              fn(item.id);
+                          }
+                      });
           
                       return false;
                   },

@@ -11,28 +11,36 @@
     <div class="form-group">
         <h4 style="margin-left:200px">Select Configuration</h4>
         <div class="row">
-            <div class="col-md-8">
-                <img class="centeredImage" droppable style="width:400px; height:400px;" src="../../../../../Content/Images/QuadConfig.png" />
+            <div class="col-md-8" style="position:relative;" droppable drop="vm.takeFromSource">
+                <img class="centeredImage" style="width:400px; height:400px;" src="../../../../../Content/Images/QuadConfig.png" />
+                <button data-ng-repeat="value in vm.selectedConfigOptions"
+                        style="position:absolute; top:{{value.ypos}}; left:{{value.xpos}};"
+                        draggable type="button"
+                        id="{{::value.name}},{{::value.group}}"
+                        class="btn btn-default">
+                    {{::value.name}}
+                </button>
             </div>
-
             <div class="col-sm-4">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Configuration Options</h3>
-                    </div>
-                    <div class="panel-body">
-                         <div class="btn-group-vertical" role="group" aria-label="..." droppable>
-                        <button draggable type="button" class="btn btn-default" data-ng-click="vm.restoreClick()">Test</button>
-                        <button draggable type="button" class="btn btn-default" data-ng-click="vm.restoreClick()">Test</button>
-                        <button draggable type="button" class="btn btn-default" data-ng-click="vm.restoreClick()">Test</button>
-                        <button draggable type="button" class="btn btn-default" data-ng-click="vm.restoreClick()">Test</button>
-                        <button draggable type="button" class="btn btn-default" data-ng-click="vm.restoreClick()">Test</button>
-                        <button draggable type="button" class="btn btn-default" data-ng-click="vm.restoreClick()">Test</button>
-                        <button draggable type="button" class="btn btn-default" data-ng-click="vm.restoreClick()">Test</button>
-                        </div>
-                    </div>
-                </div>
-        </div>
+                <nav class="content-side-menu" droppable drop="vm.returnToSource">
+                    <ul class="topMenu">
+                        <li data-ng-repeat="(key, value) in vm.configOptions">
+                            <a ng-click="isCollapsed[$index]=!isCollapsed[$index]"> {{::key}}</a>
+                            <div class="collapsibleMenu" collapse="isCollapsed[$index]">
+                                <ul class="subMenu">
+                                    <li ng-repeat="item in value">
+                                        <button draggable type="button"
+                                                id="{{::item.name}},{{::item.group}}"
+                                                class="btn btn-default">
+                                            {{::item.name}}
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         <div class="row">
             <div class="col-sm-offset-10 col-sm-2">
                 <button type="submit" class="btn btn-default">Submit</button>

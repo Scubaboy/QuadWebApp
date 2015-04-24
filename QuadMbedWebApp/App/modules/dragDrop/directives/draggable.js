@@ -16,7 +16,7 @@
               'dragstart',
               function (e) {
                   e.dataTransfer.effectAllowed = 'move';
-                  e.dataTransfer.setData('Text', "jj"); // will be an object att this.id
+                  e.dataTransfer.setData('Text', this.id);
                   this.classList.add('drag');
                   return false;
               },

@@ -7,11 +7,13 @@
         <div class="col-md-6">
             <select class="form-control" id="dropdownMenu2"
                     ng-model="vm.selectedQuad"
-                    ng-options="quad.QuadId for quad in vm.quads"
+                    ng-options="quad.id for quad in vm.quads"
                     ng-change=" vm.setSelected()"></select>
-            <p class="form-control-static" style="padding-top:6px">Identification {{vm.selectedQuadDetails.id}}</p>
-            <p class="form-control-static">Platform Configuration {{vm.selectedQuadDetails.platformConfig}}</p>
-            <p class="form-control-static">Telemtry Feed {{vm.selectedQuadDetails.telemetryFeeds}}</p>
+            <p class="form-control-static" style="padding-top:6px"><strong>Identification: </strong>{{vm.selectedQuadDetails.id}}</p>
+            <p class="form-control-static"><strong>GPS options: </strong>{{vm.selectedQuadDetails.gpsOptions}}</p>
+            <p class="form-control-static"><strong>Telemtry options: </strong>{{vm.selectedQuadDetails.telemetryOptions}}</p>
+            <p class="form-control-static"><strong>IMU options: </strong>{{vm.selectedQuadDetails.imuOptions}}</p>
+            <p class="form-control-static"><strong>Altimeter options: </strong>{{vm.selectedQuadDetails.altimeterOptions}}</p>
         </div>
     </div>
     <div class="form-group">

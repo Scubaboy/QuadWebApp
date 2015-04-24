@@ -1,0 +1,77 @@
+﻿.content-side-menu{
+    top: 100px;
+    bottom: 0;
+    left:0;
+    width: 240px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.content {
+    float: left;
+    padding-left: 240px;
+    width: 100%;
+}
+
+nav{ border-right: 1px solid #cbcbcb;}
+
+nav ul {
+    margin:0;
+    -webkit-margin-start: 0;
+    -webkit-padding-start: 0;
+    list-style: none;
+    display: block;
+    width: 100%;
+ 
+}
+
+nav ul.topMenu {
+         padding-bottom: 60px;
+  background-color: #FFF;
+}
+
+nav ul.subMenu {
+
+}
+
+nav ul li{
+    list-style: none;
+    cursor: pointer;
+}
+
+nav ul li a {
+      font-size: 13px;
+  line-height: 44px;
+  height: 44px;
+  text-decoration: none;
+  color: #444;
+  display: block;
+  padding: 0 15px;
+}
+
+nav li.title > a {
+    font-weight: 900;
+}
+
+
+nav ul li a:hover, nav ul li a:active, nav ul li a:focus  {
+  color: #444;
+  text-decoration: none;
+}
+
+nav ul li:hover {
+    background-color:  rgba(0, 0, 0, 0.05);
+}
+
+nav .collapsibleMenu {
+    background-color: #fff;
+}
+
+nav .collapsibleMenu a {
+      margin: 0 1rem 0 2rem;
+}
+
+nav .collapsibleMenu li.active a, nav li.active a {
+    color: dodgerblue ;
+    font-weight: 900;
+}

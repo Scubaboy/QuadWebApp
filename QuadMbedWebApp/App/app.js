@@ -13,6 +13,9 @@
         'viewManager',
         'localStore',
         'dragDrop',
+        'enumMapper',
+        'ConfigurationMapper',
+        'configurationManager',
         //// 3rd Party Modules
         'ui.bootstrap',     // ui-bootstrap (ex: carousel, pagination, dialog)
         //'dx'

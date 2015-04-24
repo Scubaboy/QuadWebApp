@@ -35,13 +35,13 @@ namespace QuadCtrl.Infrastructure.SignalRHubs.ActiveQuadHub
             this.Clients.All.ActiveQuadUpdated(this.activeQuadCtrl.AvailableQuads().Select(x => x.ToModel()));
         }
 
-        public bool TryTakeQuad(ActiveQuad quad)
+        public bool TryTakeQuad(string quadId)
         {
             var takeResult = false;
 
-            if (!this.activeQuadCtrl.AvailableQuads().Find(x => x.QuadId == quad.QuadId).InUse)
+            if (!this.activeQuadCtrl.AvailableQuads().Find(x => x.QuadId == quadId).InUse)
             {
-                var quadToTake = this.activeQuadCtrl.AvailableQuads().Find(x => x.QuadId == quad.QuadId);
+                var quadToTake = this.activeQuadCtrl.AvailableQuads().Find(x => x.QuadId == quadId);
 
                 quadToTake.InUse = true;
 

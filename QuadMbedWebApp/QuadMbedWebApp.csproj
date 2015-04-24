@@ -96,6 +96,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\side-menu.css" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Scripts\underscore.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -104,10 +108,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\app.consts.js" />
     <Content Include="App\app.js" />
+    <Content Include="App\modules\configMapper\services\altimeterMapper.js" />
+    <Content Include="App\modules\ConfigurationManager\configurationManager.js" />
+    <Content Include="App\modules\ConfigurationManager\services\sourceConfigMgr.js" />
+    <Content Include="App\modules\configMapper\services\gpsMapper.js" />
+    <Content Include="App\modules\configMapper\services\imuMapper.js" />
+    <Content Include="App\modules\configMapper\ConfigMapper.js" />
+    <Content Include="App\modules\configMapper\services\telemetryMapper.js" />
     <Content Include="App\modules\dragDrop\directives\draggable.js" />
     <Content Include="App\modules\dragDrop\directives\droppable.js" />
     <Content Include="App\modules\dragDrop\drapDrop.js" />
+    <Content Include="App\modules\EnumMapper\enumMapper.js" />
+    <Content Include="App\modules\EnumMapper\factories\enumFct.js" />
     <Content Include="App\modules\LocalStore\localStore.js" />
     <Content Include="App\modules\viewManager\directives\dynamicController.js" />
     <Content Include="App\modules\viewManager\factories\viewFactory.js" />

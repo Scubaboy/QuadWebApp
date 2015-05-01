@@ -64,6 +64,12 @@
         var id = inputId;
         var chosenConfig = []
 
+        this.hasConfigItem = function (configItemId) {
+            return _.find(chosenConfig, function (item) {
+                return item.group === configItemId.key;
+            })
+        }
+
         this.addConfigItem = function (configItem) {
             chosenConfig.push(configItem);
         }

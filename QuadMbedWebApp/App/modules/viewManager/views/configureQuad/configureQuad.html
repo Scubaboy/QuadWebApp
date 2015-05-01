@@ -14,7 +14,7 @@
             <div class="col-md-8" style="position:relative;" droppable drop="vm.takeFromSource">
                 <img class="centeredImage" style="width:400px; height:400px;" src="../../../../../Content/Images/QuadConfig.png" />
                 <button data-ng-repeat="value in vm.selectedConfigOptions"
-                        style="position:absolute; top:{{value.ypos}}; left:{{value.xpos}};"
+                        style="position:absolute; top:{{value.top}}; left:{{value.left}};"
                         draggable type="button"
                         id="{{::value.name}},{{::value.group}}"
                         class="btn btn-default">
@@ -22,18 +22,17 @@
                 </button>
             </div>
             <div class="col-sm-4">
-                <nav class="content-side-menu" droppable drop="vm.returnToSource">
-                    <ul class="topMenu">
+                <nav id="quadConfSelect" droppable drop="vm.returnToSource">
+                    <ul class="topMenu" >
                         <li data-ng-repeat="(key, value) in vm.configOptions">
-                            <a ng-click="isCollapsed[$index]=!isCollapsed[$index]"> {{::key}}</a>
+                            <a ng-click="isCollapsed[$index]=!isCollapsed[$index]"> {{key}}</a>
                             <div class="collapsibleMenu" collapse="isCollapsed[$index]">
                                 <ul class="subMenu">
                                     <li ng-repeat="item in value">
-                                        <button draggable type="button"
-                                                id="{{::item.name}},{{::item.group}}"
-                                                class="btn btn-default">
-                                            {{::item.name}}
-                                        </button>
+                                        <a class="alert alert-success" draggable
+                                           id="{{item.name}},{{item.group}}">
+                                            {{item.name}}
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

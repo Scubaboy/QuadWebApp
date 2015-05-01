@@ -16,12 +16,16 @@
         altimeterMap[altimeterEnums.GPSAlt] = {
             type: altimeterEnums.GPSAlt,
             name: 'GPSAlt',
+            top: '25%',
+            left: '62%',
             group: 'alt'
         };
 
         altimeterMap[altimeterEnums.MPL115A2] = {
             type: altimeterEnums.MPL115A2,
             name: 'MPL115A2',
+            top: '25%',
+            left: '62%',
             group: 'alt'
         };
 

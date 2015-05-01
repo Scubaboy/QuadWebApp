@@ -25,22 +25,27 @@
 
        this.takeSourceConfigItem = function (takenItem) {
            if (quad != undefined && configSource != undefined) {
+               if (quad.hasConfigItem(takenItem) === undefined) {
+                   var sourceItem = _.find(configSource[takenItem.key], function (item) {
+                       return item.name === takenItem.item;
+                   });
 
-               var sourceItem = _.find(configSource[takenItem.key], function (item) {
-                   return item.name === takenItem.item;
-               });
+                   if (sourceItem !== undefined) {
+                       var index = configSource[sourceItem.group].indexOf(sourceItem);
 
-               if (sourceItem !== undefined) {
-                   var index = configSource[sourceItem.group].indexOf(sourceItem);
+                       if (index > -1) {
+                           configSource[sourceItem.group].splice(index, 1);
+                       }
 
-                   if (index > -1) {
-                       configSource[sourceItem.group].splice(index, 1);
+                       //Add the chosen config item to the quads config structure
+                       quad.addConfigItem(sourceItem);
                    }
-
-                   //Add the chosen config item to the quads config structure
-                   quad.addConfigItem(sourceItem);
                }
-            }
+               else {
+              
+
+               }
+           }
         }
 
         this.returnConfigItemToSource = function (returnedItem) {

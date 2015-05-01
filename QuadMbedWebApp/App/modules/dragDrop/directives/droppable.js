@@ -53,8 +53,8 @@
                       this.classList.remove('over');
           
                       var item = document.getElementById(e.dataTransfer.getData('Text'));
-                      var parent = item.parentNode
-                      parent.removeChild(item);
+                     // var parent = item.parentNode
+                     // parent.removeChild(item);
                       // call the passed drop function
                       scope.$apply(function(scope) {
                           var fn = scope.drop();

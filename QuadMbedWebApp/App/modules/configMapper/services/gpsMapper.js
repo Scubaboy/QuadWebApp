@@ -16,8 +16,8 @@
         gpsMap[gpsEnums.MTKV11] = {
             type: gpsEnums.MTKV11,
             name: 'MTKV11',
-            xpos: '100px',
-            ypos: '100px',
+            top: '25%',
+            left: '20%',
             group: 'gps'
         };
 
